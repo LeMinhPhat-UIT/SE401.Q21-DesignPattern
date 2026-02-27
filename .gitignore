@@ -1,3 +1,5 @@
 .vs/
 /AbstractFactoryDemo/obj
 /AbstractFactoryDemo/bin/Debug/net10.0
+/FactoryMethodDemo/bin/Debug/net10.0
+/FactoryMethodDemo/obj
