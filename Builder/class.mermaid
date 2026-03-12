@@ -1,0 +1,35 @@
+---
+title: Builder class diagram
+---
+classDiagram
+    class Product1{
+      +parts[] : String
+      +report()
+    }
+
+    class Builder{
+      <<interface>>
+      +reset()
+      +addA()
+      +addB()
+      +addC()
+    }
+
+    Builder <|-- ConcreteBuilder1
+    Product1 <-- ConcreteBuilder1 
+    class ConcreteBuilder1{
+      -product : Product1
+      +ConcreteBuilder1()
+      +reset()
+      +addA()
+      +addB()
+      +addC()
+    }
+
+    Builder <-- Director
+    class Director {
+      -builder : Builder
+      +Director(builder)
+      +build_min()
+      +build_max()
+    }

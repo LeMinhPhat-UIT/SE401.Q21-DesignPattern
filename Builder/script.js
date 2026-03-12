@@ -1,37 +1,35 @@
 function print(str) { console.log(str) }
 
-class Product1 { parts = []; list() { print(this.parts) } }
+class Product1 { parts = []; report() { print(this.parts) } }
 
-class Builder { addA() { }; addB() { }; addC() { } }
+class Builder { reset() { }; addA() { }; addB() { }; addC() { } }
 
 class ConcreteBuilder1 extends Builder {
-    product; constructor() { super(); this.reset() }; reset() { this.product = new Product1() }
+    product; constructor() { super(); this.reset() };
 
-    build() { const result = this.product; this.reset(); return result }
-
+    reset() { this.product = new Product1() }
     addA() { this.product.parts.push('PartA1') }
     addB() { this.product.parts.push('PartB1') }
     addC() { this.product.parts.push('PartC1') }
+
+    getProd() { const result = this.product; this.reset(); return result }
 }
 
 class Director {
-    builder; set(builder) { this.builder = builder }
+    builder; constructor(builder) { this.builder = builder }
 
     build_min() { this.builder.addA() }
     build_max() { this.builder.addA(); this.builder.addB(); this.builder.addC() }
 }
 
-const drc = new Director(); const bld = new ConcreteBuilder1(); drc.set(bld)
+const bld = new ConcreteBuilder1();
+const drc = new Director(bld);
 
-print('Standard basic product:')
-drc.build_min()
-bld.build().list()
+print('Standard basic product:'); drc.build_min()
+bld.getProd().report()
 
-print('Standard full featured product:')
-drc.build_max()
-bld.build().list()
+print('Standard full featured product:'); drc.build_max()
+bld.getProd().report()
 
-print('Custom product:')
-bld.addA()
-bld.addB()
-bld.build().list()
+print('Custom product:'); bld.addA(); bld.addB()
+bld.getProd().report()
