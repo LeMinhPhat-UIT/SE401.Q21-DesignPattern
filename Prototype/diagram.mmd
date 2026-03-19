@@ -1,0 +1,25 @@
+classDiagram
+    direction TB
+
+    class Client {
+        +operation()
+    }
+
+    class Prototype {
+        <<interface>>
+        +clone()
+    }
+
+    class ConcretePrototypeA {
+        -fieldA
+        +clone()
+    }
+
+    class ConcretePrototypeB {
+        -fieldB
+        +clone()
+    }
+
+    Client --> Prototype
+    Prototype <|.. ConcretePrototypeA
+    Prototype <|.. ConcretePrototypeB

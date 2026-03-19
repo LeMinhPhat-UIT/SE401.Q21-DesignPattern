@@ -1,0 +1,22 @@
+classDiagram
+    direction TB
+
+    class Component {
+        <<interface>>
+        +operation()
+    }
+
+    class Leaf {
+        +operation()
+    }
+
+    class Composite {
+        -children
+        +add(Component)
+        +remove(Component)
+        +operation()
+    }
+
+    Component <|.. Leaf
+    Component <|.. Composite
+    Composite o-- Component : contains

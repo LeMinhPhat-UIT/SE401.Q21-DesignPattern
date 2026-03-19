@@ -83,7 +83,7 @@ function client2(component1, component2) {
   print(`RESULT: ${component1.operation()}`);
 }
 
-print("=== Composite Pattern Demo ===\n");
+print(" Composite Pattern Demo \n");
 
 print("Client: Simple tree with leaves:");
 const simple = new Leaf("Simple");
