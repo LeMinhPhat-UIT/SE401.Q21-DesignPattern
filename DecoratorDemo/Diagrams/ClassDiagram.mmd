@@ -1,0 +1,58 @@
+classDiagram
+    class ITool {
+        <<interface>>
+        +Durability: double
+    }
+    
+    class ISword {
+        <<interface>>
+        +AttackDamage: double
+        +AttackSpeed: double
+    }
+    
+    class SwordDecorator {
+        <<abstract>>
+        #_innerSword: ISword
+        +SwordDecorator(innerSword: ISword)
+        +AttackDamage: double
+        +AttackSpeed: double
+        +Durability: double
+    }
+    
+    class DiamondSword {
+        +AttackDamage: double
+        +AttackSpeed: double
+        +Durability: double
+        +PercentDrop: double
+    }
+    
+    class WoodenSword {
+        +AttackDamage: double
+        +AttackSpeed: double
+        +Durability: double
+        +PercentDrop: double
+    }
+    
+    class FireAspect_II {
+        +FireAspect_II(innerSword: ISword)
+        +FireDamage: double
+    }
+    
+    class Unbreaking_III {
+        +Unbreaking_III(innerSword: ISword)
+        +Durability: double
+    }
+    
+    class Sharpness_V {
+        +Sharpness_V(innerSword: ISword)
+        +AttackDamage: double
+    }
+    
+    ISword --|> ITool
+    DiamondSword --|> ISword
+    WoodenSword --|> ISword
+    SwordDecorator --|> ISword
+    FireAspect_II --|> SwordDecorator
+    Unbreaking_III --|> SwordDecorator
+    Sharpness_V --|> SwordDecorator
+    SwordDecorator *-- ISword : wraps
