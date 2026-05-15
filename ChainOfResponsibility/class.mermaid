@@ -1,0 +1,23 @@
+classDiagram
+    class Handler {
+        +setNext(Handler) Handler
+        +handle(request) Result
+        #nextHandler Handler
+    }
+    
+    class MonkeyHandler {
+        +handle(request) Result
+    }
+    
+    class SquirrelHandler {
+        +handle(request) Result
+    }
+    
+    class DogHandler {
+        +handle(request) Result
+    }
+    
+    Handler <|-- MonkeyHandler
+    Handler <|-- SquirrelHandler
+    Handler <|-- DogHandler
+    Handler --> Handler : nextHandler

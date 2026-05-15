@@ -1,0 +1,39 @@
+classDiagram
+    class Iterator {
+        <<interface>>
+        +current() Object
+        +next() Object
+        +key() Number
+        +valid() boolean
+        +rewind() void
+    }
+    
+    class AlphabeticalOrderIterator {
+        -collection WordsCollection
+        -position Number
+        -reverse boolean
+        +current() string
+        +next() string
+        +key() Number
+        +valid() boolean
+        +rewind() void
+    }
+    
+    class Aggregator {
+        <<interface>>
+        +getIterator() Iterator
+    }
+    
+    class WordsCollection {
+        -items string[]
+        +addItem(item)
+        +getItems() string[]
+        +getCount() Number
+        +getIterator() Iterator
+        +getReverseIterator() Iterator
+    }
+    
+    Iterator <|.. AlphabeticalOrderIterator
+    Aggregator <|.. WordsCollection
+    WordsCollection --> AlphabeticalOrderIterator : creates
+    AlphabeticalOrderIterator --> WordsCollection : traverses
