@@ -1,0 +1,37 @@
+classDiagram
+    class Notification {
+        <<abstract>>
+        #sender: INotificationSender
+        #Notification(sender: INotificationSender)
+        Send(message: string)* string
+    }
+
+    class BasicNotification {
+        +BasicNotification(sender: INotificationSender)
+        +Send(message: string) void
+    }
+
+    class UrgentNotification {
+        +UrgentNotification(sender: INotificationSender)
+        +Send(message: string) void
+    }
+
+    class INotificationSender {
+        <<interface>>
+        Send(message: string)* void
+    }
+
+    class EmailSender {
+        +Send(message: string) void
+    }
+
+    class SmsSender {
+        +Send(message: string) void
+    }
+
+    %% Relationships
+    Notification <|-- BasicNotification
+    Notification <|-- UrgentNotification
+    Notification o--> INotificationSender
+    INotificationSender <|.. EmailSender
+    INotificationSender <|.. SmsSender
