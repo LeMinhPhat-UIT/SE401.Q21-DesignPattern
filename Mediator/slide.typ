@@ -12,7 +12,7 @@
   count: "number",
 )
 
-= Tên, Bí danh & Phân loại
+= Tên & Phân loại
 
 - Tên gọi: Mediator, lớp trung gian
 - Tên khác: Intermediary, Controller
