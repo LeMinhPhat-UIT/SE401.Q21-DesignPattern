@@ -1,0 +1,148 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                   DECORATOR DESIGN PATTERN DEMO                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Interfaces/ITool.cs                                                                             │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace DecoratorDemo.Interfaces                                                              │
+│  {                                                                                               │
+│      internal interface ITool                                                                    │
+│      {                                                                                           │
+│          double Durability { get; }                                                              │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Interfaces/ISword.cs                                                                            │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace DecoratorDemo.Interfaces                                                              │
+│  {                                                                                               │
+│      internal interface ISword : ITool                                                           │
+│      {                                                                                           │
+│          double AttackDamage { get; }                                                            │
+│          double AttackSpeed { get; }                                                             │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Interfaces/SwordDecorator.cs                                                                    │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace DecoratorDemo.Interfaces                                                              │
+│  {                                                                                               │
+│      internal abstract class SwordDecorator : ISword                                             │
+│      {                                                                                           │
+│          public ISword _innerSword;                                                              │
+│                                                                                                  │
+│          public SwordDecorator(ISword innerSword)                                                │
+│          {                                                                                       │
+│              _innerSword = innerSword;                                                           │
+│          }                                                                                       │
+│                                                                                                  │
+│          public virtual double AttackDamage => _innerSword.AttackDamage;                         │
+│          public virtual double AttackSpeed => _innerSword.AttackSpeed;                           │
+│          public virtual double Durability => _innerSword.Durability;                             │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Implements/DiamondSword.cs                                                                      │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace DecoratorDemo.Implements                                                              │
+│  {                                                                                               │
+│      internal class DiamondSword : ISword                                                        │
+│      {                                                                                           │
+│          public double AttackDamage => 7;                                                        │
+│          public double AttackSpeed => 1.6;                                                       │
+│          public double Durability => 1561;                                                       │
+│          public double PercentDrop => 100;                                                       │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Implements/WoodenSword.cs                                                                       │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace DecoratorDemo.Implements                                                              │
+│  {                                                                                               │
+│      internal class WoodenSword : ISword                                                         │
+│      {                                                                                           │
+│          public double AttackDamage => 4;                                                        │
+│          public double AttackSpeed => 1.6;                                                       │
+│          public double Durability => 59;                                                         │
+│          public double PercentDrop => 100;                                                       │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Implements/DecoratorConcretes/Sharpness_V.cs                                                    │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace DecoratorDemo.Implements.DecoratorConcretes                                           │
+│  {                                                                                               │
+│      internal class Sharpness_V : SwordDecorator                                                 │
+│      {                                                                                           │
+│          public Sharpness_V(ISword innerSword) : base(innerSword) { }                            │
+│                                                                                                  │
+│          public override double AttackDamage => base.AttackDamage + 3;                           │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Implements/DecoratorConcretes/Unbreaking_III.cs                                                 │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace DecoratorDemo.Implements.DecoratorConcretes                                           │
+│  {                                                                                               │
+│      internal class Unbreaking_III : SwordDecorator                                              │
+│      {                                                                                           │
+│          public Unbreaking_III(ISword innerSword) : base(innerSword) { }                         │
+│                                                                                                  │
+│          public override double Durability => base.Durability * (1 + 3d/7);                      │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Implements/DecoratorConcretes/FireAspect_II.cs                                                  │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace DecoratorDemo.Implements.DecoratorConcretes                                           │
+│  {                                                                                               │
+│      internal class FireAspect_II : SwordDecorator                                               │
+│      {                                                                                           │
+│          public FireAspect_II(ISword innerSword) : base(innerSword) { }                          │
+│                                                                                                  │
+│          public double FireDamage => 1;                                                          │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Program.cs                                                                                      │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  using DecoratorDemo.Implements;                                                                 │
+│  using DecoratorDemo.Implements.DecoratorConcretes;                                              │
+│  using DecoratorDemo.Interfaces;                                                                 │
+│                                                                                                  │
+│  ISword diamondSword = new DiamondSword();                                                       │
+│  PrintInformation(diamondSword);                                                                 │
+│                                                                                                  │
+│  diamondSword = new Unbreaking_III(diamondSword);                                                │
+│  PrintInformation(diamondSword);                                                                 │
+│                                                                                                  │
+│  diamondSword = new Sharpness_V(diamondSword);                                                   │
+│  PrintInformation(diamondSword);                                                                 │
+│                                                                                                  │
+│  void PrintInformation(ISword sword)                                                             │
+│  {                                                                                               │
+│      Console.WriteLine($"""                                                                      │
+│          DiamondSword information:                                                               │
+│              AttackDamage: {diamondSword.AttackDamage}                                           │
+│              AttackSpeed: {diamondSword.AttackSpeed}                                             │
+│              Durability: {diamondSword.Durability}                                               │
+│          """);                                                                                   │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘

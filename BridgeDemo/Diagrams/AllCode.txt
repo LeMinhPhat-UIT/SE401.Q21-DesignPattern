@@ -1,0 +1,114 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                    BRIDGE DESIGN PATTERN DEMO                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Implements/INotificationSender.cs                                                               │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace BridgeDemo.Implements                                                                 │
+│  {                                                                                               │
+│      public interface INotificationSender                                                        │
+│      {                                                                                           │
+│          void Send(string message);                                                              │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Implements/EmailSender.cs                                                                       │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace BridgeDemo.Implements                                                                 │
+│  {                                                                                               │
+│      public class EmailSender : INotificationSender                                              │
+│      {                                                                                           │
+│          public void Send(string message)                                                        │
+│          {                                                                                       │
+│              Console.WriteLine($"[Email] Sending: {message}");                                   │
+│          }                                                                                       │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Implements/SmsSender.cs                                                                         │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace BridgeDemo.Implements                                                                 │
+│  {                                                                                               │
+│      public class SmsSender : INotificationSender                                                │
+│      {                                                                                           │
+│          public void Send(string message)                                                        │
+│          {                                                                                       │
+│              Console.WriteLine($"[SMS] Sending: {message}");                                     │
+│          }                                                                                       │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Abstractions/Notification.cs                                                                    │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace BridgeDemo.Abstractions                                                               │
+│  {                                                                                               │
+│      public abstract class Notification                                                          │
+│      {                                                                                           │
+│          protected INotificationSender sender;                                                   │
+│                                                                                                  │
+│          protected Notification(INotificationSender sender)                                      │
+│          {                                                                                       │
+│              this.sender = sender;                                                               │
+│          }                                                                                       │
+│                                                                                                  │
+│          public abstract void Send(string message);                                              │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Abstractions/BasicNotification.cs                                                               │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace BridgeDemo.Abstractions                                                               │
+│  {                                                                                               │
+│      public class BasicNotification : Notification                                               │
+│      {                                                                                           │
+│          public BasicNotification(INotificationSender sender) : base(sender) { }                 │
+│                                                                                                  │
+│          public override void Send(string message)                                               │
+│          {                                                                                       │
+│              sender.Send(message);                                                               │
+│          }                                                                                       │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Abstractions/UrgentNotification.cs                                                              │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  namespace BridgeDemo.Abstractions                                                               │
+│  {                                                                                               │
+│      public class UrgentNotification : Notification                                              │
+│      {                                                                                           │
+│          public UrgentNotification(INotificationSender sender) : base(sender) { }                │
+│                                                                                                  │
+│          public override void Send(string message)                                               │
+│          {                                                                                       │
+│              sender.Send("[URGENT] " + message);                                                 │
+│          }                                                                                       │
+│      }                                                                                           │
+│  }                                                                                               │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  Program.cs                                                                                      │
+├──────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  using BridgeDemo.Abstractions;                                                                  │
+│  using BridgeDemo.Implements;                                                                    │
+│                                                                                                  │
+│  Notification notification1 = new BasicNotification(new EmailSender());                         │
+│  notification1.Send("Hello World");                                                              │
+│                                                                                                  │
+│  Notification notification2 = new UrgentNotification(new SmsSender());                          │
+│  notification2.Send("Server is down!");                                                          │
+│                                                                                                  │
+│  Notification notification3 = new UrgentNotification(new EmailSender());                        │
+│  notification3.Send("Database error!");                                                          │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
