@@ -20,6 +20,7 @@ Nhóm 05
 
 = Abstract Factory (Phúc)
 #include "../AbstractFactory/report.typ"
+// báo cáo
 
 = Adapter (Phát)
 #include "../Adapter/report.typ"
@@ -38,9 +39,11 @@ Nhóm 05
 
 = Composite (Phúc)
 #include "../Composite/report.typ"
+// báo cáo
 
 = Decorator (Phúc)
 #include "../Decorator/report.typ"
+// báo cáo
 
 = Facade (Phát)
 #include "../Facade/report.typ"
@@ -53,12 +56,15 @@ Nhóm 05
 
 = Interpreter (Phúc)
 #include "../Interpreter/report.typ"
+// báo cáo
 
 = Iterator (Đạt)
 #include "../Iterator/report.typ"
 
 = Mediator (Phúc)
 #include "../Mediator/report.typ"
+// code
+// báo cáo
 
 = Memento (Phát)
 #include "../Memento/report.typ"
@@ -77,6 +83,9 @@ Nhóm 05
 
 = State (Phúc)
 #include "../State/report.typ"
+// báo cáo
+// slide
+// code
 
 = Strategy (Đạt)
 #include "../Strategy/report.typ"
@@ -86,4 +95,6 @@ Nhóm 05
 
 = Visitor (Phúc)
 #include "../Visitor/report.typ"
-
+// báo cáo
+// slide
+// code
