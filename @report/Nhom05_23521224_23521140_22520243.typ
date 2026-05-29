@@ -18,72 +18,72 @@ Nhóm 05
 #set par(leading: 0.55em, spacing: 0.55em, first-line-indent: 1.8em, justify: true)
 #show heading: set block(above: 1.4em, below: 1em)
 
-= Abstract Factory
+= Abstract Factory (Phúc)
 #include "../AbstractFactory/report.typ"
 
-= Adapter
+= Adapter (Phát)
 #include "../Adapter/report.typ"
 
-= Bridge
+= Bridge (Đạt)
 #include "../Bridge/report.typ"
 
-= Builder
+= Builder (Đạt)
 #include "../Builder/report.typ"
 
-= Chain of Responsibility
+= Chain of Responsibility (Phát)
 #include "../ChainOfResponsibility/report.typ"
 
-= Command
+= Command (Đạt)
 #include "../Command/report.typ"
 
-= Composite
+= Composite (Phúc)
 #include "../Composite/report.typ"
 
-= Decorator
+= Decorator (Phúc)
 #include "../Decorator/report.typ"
 
-= Facade
+= Facade (Phát)
 #include "../Facade/report.typ"
 
-= Factory Method
+= Factory Method (Đạt)
 #include "../FactoryMethod/report.typ"
 
-= Flyweight
+= Flyweight (Phát)
 #include "../Flyweight/report.typ"
 
-= Interpreter
+= Interpreter (Phúc)
 #include "../Interpreter/report.typ"
 
-= Iterator
+= Iterator (Đạt)
 #include "../Iterator/report.typ"
 
-= Mediator
+= Mediator (Phúc)
 #include "../Mediator/report.typ"
 
-= Memento
+= Memento (Phát)
 #include "../Memento/report.typ"
 
-= Observer
+= Observer (Đạt)
 #include "../Observer/report.typ"
 
-= Prototype
+= Prototype (Phát)
 #include "../Prototype/report.typ"
 
-= Proxy
+= Proxy (Đạt)
 #include "../Proxy/report.typ"
 
-= Singleton
+= Singleton (Phát)
 #include "../Singleton/report.typ"
 
-= State
+= State (Phúc)
 #include "../State/report.typ"
 
-= Strategy
+= Strategy (Đạt)
 #include "../Strategy/report.typ"
 
-= Template Method
+= Template Method (Phát)
 #include "../TemplateMethod/report.typ"
 
-= Visitor
+= Visitor (Phúc)
 #include "../Visitor/report.typ"
 
