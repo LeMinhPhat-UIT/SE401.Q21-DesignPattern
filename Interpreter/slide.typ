@@ -19,7 +19,7 @@
 - Phân loại: Behavioral Pattern (Mẫu ứng xử)
 
 #box(stroke: 1pt + rgb("#2196F3"), radius: 5pt, inset: 12pt, [
-  Các mẫu xác định cấu trúc của một ngôn ngữ và cách giải thích các câu trong ngôn ngữ đó
+  Xác định cấu trúc của một ngôn ngữ và cách giải thích các câu trong ngôn ngữ đó
 ])
 
 = Mục đích & Ý định
