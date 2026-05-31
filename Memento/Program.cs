@@ -1,227 +1,120 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
-namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
+public class EditorMemento
 {
-  // The Originator holds some important state that may change over time. It
-  // also defines a method for saving the state inside a memento and another
-  // method for restoring the state from it.
-  class Originator
-  {
-    // For the sake of simplicity, the originator's state is stored inside a
-    // single variable.
-    private string _state;
+    private readonly string _content;
+    private readonly int _cursorPosition;
+    private readonly DateTime _savedAt;
 
-    public Originator(string state)
+    public EditorMemento(string content, int cursorPosition)
     {
-      this._state = state;
-      Console.WriteLine("Originator: My initial state is: " + state);
+        _content = content;
+        _cursorPosition = cursorPosition;
+        _savedAt = DateTime.Now;
     }
 
-    // The Originator's business logic may affect its internal state.
-    // Therefore, the client should backup the state before launching
-    // methods of the business logic via the save() method.
-    public void DoSomething()
+    public string GetContent()
     {
-      Console.WriteLine("Originator: I'm doing something important.");
-      this._state = this.GenerateRandomString(30);
-      Console.WriteLine($"Originator: and my state has changed to: {_state}");
+        return _content;
     }
 
-    private string GenerateRandomString(int length = 10)
+    public int GetCursorPosition()
     {
-      string allowedSymbols = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      string result = string.Empty;
-
-      while (length > 0)
-      {
-        result += allowedSymbols[new Random().Next(0, allowedSymbols.Length)];
-
-        Thread.Sleep(12);
-
-        length--;
-      }
-
-      return result;
+        return _cursorPosition;
     }
 
-    // Saves the current state inside a memento.
-    public IMemento Save()
+    public string GetLabel()
     {
-      return new ConcreteMemento(this._state);
+        return $"Saved at {_savedAt:HH:mm:ss}, length = {_content.Length}";
+    }
+}
+
+public class TextEditor
+{
+    private string _content = "";
+    private int _cursorPosition = 0;
+
+    public void Type(string text)
+    {
+        _content = _content.Insert(_cursorPosition, text);
+        _cursorPosition += text.Length;
     }
 
-    // Restores the Originator's state from a memento object.
-    public void Restore(IMemento memento)
+    public void MoveCursor(int position)
     {
-      if (!(memento is ConcreteMemento))
-      {
-        throw new Exception("Unknown memento class " + memento.ToString());
-      }
+        if (position < 0 || position > _content.Length)
+        {
+            throw new ArgumentOutOfRangeException(nameof(position));
+        }
 
-      this._state = memento.GetState();
-      Console.Write($"Originator: My state has changed to: {_state}");
-    }
-  }
-
-  // The Memento interface provides a way to retrieve the memento's metadata,
-  // such as creation date or name. However, it doesn't expose the
-  // Originator's state.
-  public interface IMemento
-  {
-    string GetName();
-
-    string GetState();
-
-    DateTime GetDate();
-  }
-
-  // The Concrete Memento contains the infrastructure for storing the
-  // Originator's state.
-  class ConcreteMemento : IMemento
-  {
-    private string _state;
-
-    private DateTime _date;
-
-    public ConcreteMemento(string state)
-    {
-      this._state = state;
-      this._date = DateTime.Now;
+        _cursorPosition = position;
     }
 
-    // The Originator uses this method when restoring its state.
-    public string GetState()
+    public EditorMemento CreateSnapshot()
     {
-      return this._state;
+        return new EditorMemento(_content, _cursorPosition);
     }
 
-    // The rest of the methods are used by the Caretaker to display
-    // metadata.
-    public string GetName()
+    public void Restore(EditorMemento memento)
     {
-      return $"{this._date} / ({this._state.Substring(0, 9)})...";
+        _content = memento.GetContent();
+        _cursorPosition = memento.GetCursorPosition();
     }
 
-    public DateTime GetDate()
+    public void Show()
     {
-      return this._date;
+        Console.WriteLine($"Content: '{_content}' | Cursor: {_cursorPosition}");
     }
-  }
+}
 
-  // The Caretaker doesn't depend on the Concrete Memento class. Therefore, it
-  // doesn't have access to the originator's state, stored inside the memento.
-  // It works with all mementos via the base Memento interface.
-  class Caretaker
-  {
-    private List<IMemento> _CtrlZ = new List<IMemento>();
-    private List<IMemento> _CtrlY = new List<IMemento>();
+public class EditorHistory
+{
+    private readonly Stack<EditorMemento> _undoStack = new();
 
-    private Originator _originator = null;
-
-    public Caretaker(Originator originator)
+    public void Save(TextEditor editor)
     {
-      this._originator = originator;
+        _undoStack.Push(editor.CreateSnapshot());
     }
 
-    public void Backup()
+    public void Undo(TextEditor editor)
     {
-      Console.WriteLine("\nCaretaker: Saving Originator's state...");
-      this._CtrlZ.Add(this._originator.Save());
-    }
+        if (_undoStack.Count == 0)
+        {
+            Console.WriteLine("Nothing to undo.");
+            return;
+        }
 
-    public void CtrlZ()
+        EditorMemento snapshot = _undoStack.Pop();
+        editor.Restore(snapshot);
+        Console.WriteLine($"Restored: {snapshot.GetLabel()}");
+    }
+}
+
+public class Program
+{
+    public static void Main()
     {
-      if (this._CtrlZ.Count == 0)
-      {
-        return;
-      }
+        TextEditor editor = new TextEditor();
+        EditorHistory history = new EditorHistory();
 
-      var memento = this._CtrlZ.Last();
-      this._CtrlZ.Remove(memento);
-      this._CtrlY.Add(_originator.Save());
+        history.Save(editor);
+        editor.Type("Hello");
+        editor.Show();
 
-      Console.WriteLine("Caretaker: Restoring state to: " + memento.GetName());
+        history.Save(editor);
+        editor.Type(" World");
+        editor.Show();
 
-      try
-      {
-        this._originator.Restore(memento);
-      }
-      catch (Exception)
-      {
-        this.CtrlZ();
-      }
+        history.Save(editor);
+        editor.MoveCursor(5);
+        editor.Type(", C#");
+        editor.Show();
+
+        history.Undo(editor);
+        editor.Show();
+
+        history.Undo(editor);
+        editor.Show();
     }
-
-    public void CtrlY()
-    {
-      if (this._CtrlY.Count == 0)
-      {
-        return;
-      }
-
-      var memento = this._CtrlY.Last();
-      this._CtrlY.Remove(memento);
-      this._CtrlZ.Add(_originator.Save());
-
-      Console.WriteLine("Caretaker: Restoring state to: " + memento.GetName());
-
-      try
-      {
-        this._originator.Restore(memento);
-      }
-      catch (Exception)
-      {
-        this.CtrlY();
-      }
-    }
-
-    public void ShowHistory()
-    {
-      Console.WriteLine("Caretaker: Here's the list of mementos:");
-
-      foreach (var memento in this._CtrlZ)
-      {
-        Console.WriteLine(memento.GetName());
-      }
-    }
-  }
-
-  class Program
-  {
-    static void Main(string[] args)
-    {
-      // Client code.
-      Originator originator = new Originator("Super-duper-super-puper-super.");
-      Caretaker caretaker = new Caretaker(originator);
-
-      caretaker.Backup();
-      originator.DoSomething();
-
-      caretaker.Backup();
-      originator.DoSomething();
-
-      caretaker.Backup();
-      originator.DoSomething();
-
-      Console.WriteLine();
-      caretaker.ShowHistory();
-
-      Console.WriteLine("\nClient: Now, let's rollback!\n");
-      caretaker.CtrlZ();
-
-      Console.WriteLine("\n\nClient: Once more!\n");
-      caretaker.CtrlZ();
-
-      // Console.WriteLine("\nClient: Now, let's rollback!\n");
-      // caretaker.CtrlY();
-
-      // Console.WriteLine("\n\nClient: Once more!\n");
-      // caretaker.CtrlY();
-
-      Console.WriteLine();
-    }
-  }
 }
