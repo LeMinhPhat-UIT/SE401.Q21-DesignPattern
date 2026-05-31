@@ -1,43 +1,50 @@
 #set heading(level: 2)
 
 = Tên và Phân loại
-// Tên mẫu và phân loại (Creational/Structural/Behavioral)
+Abstract Factory - Mẫu tạo (Creational Pattern)
 
 = Mục đích, ý định
-// Mô tả ngắn gọn về mẫu thiết kế - mục đích chính của nó
+Cung cấp giao diện để tạo các họ đối tượng liên quan mà không cần chỉ định rõ các lớp cụ thể của chúng.
 
 = Bí danh
-// Các tên khác của mẫu này
+Kit
 
 = Motivation
-// Trình bày một tình huống cụ thể trong thiết kế phần mềm dẫn đến việc sử dụng mẫu này để giải quyết vấn đề
+Cần tạo các sản phẩm tương thích nhau từ các họ khác nhau. Thay vì khởi tạo trực tiếp từng lớp, sử dụng factory để quản lý việc tạo.
 
 = Khả năng ứng dụng
-// Gợi ý các tình huống trong thiết kế mà có thể ứng dụng mẫu này
+- Hệ thống cần độc lập từ cách các sản phẩm được tạo
+- Cần đảm bảo sử dụng các sản phẩm từ cùng một họ
+- Cần linh hoạt chuyển đổi giữa các họ sản phẩm khác nhau
 
 = Cấu trúc
-// Mô tả mẫu bằng các ký hiệu đồ hình (OMT, UML, ...)
+AbstractFactory khai báo giao diện tạo sản phẩm. ConcreteFactory triển khai giao diện để tạo các sản phẩm cụ thể.
 
 = Các thành viên
-// Trình bày ý nghĩa của các lớp/đối tượng tham gia vào mẫu thiết kế và trách nhiệm của chúng
+- AbstractFactory: giao diện khai báo phương thức tạo sản phẩm
+- ConcreteFactory: triển khai tạo sản phẩm cụ thể
+- AbstractProduct: giao diện sản phẩm
+- ConcreteProduct: sản phẩm cụ thể
+- Client: sử dụng factory để tạo sản phẩm
 
 = Sự cộng tác
-// Các thành viên (lớp/đối tượng) của mẫu cộng tác như thế nào để thực hiện trách nhiệm của chúng
+Client gọi phương thức của AbstractFactory. ConcreteFactory tạo ra ConcreteProduct tương ứng.
 
 = Các hệ quả mang lại, Ưu nhược điểm
-// Phân tích các hệ quả, ưu điểm và nhược điểm của mẫu
+*Ưu điểm:* Tách logic tạo từ client; dễ chuyển đổi họ sản phẩm.
+*Nhược điểm:* Khó thêm sản phẩm mới vào họ; code phức tạp hơn.
 
 = Chú ý liên quan đến việc cài đặt
-// Các điểm cần lưu ý khi cài đặt mẫu này
-
-= Một số so sánh nếu có
-// So sánh với các mẫu khác hoặc các cách tiếp cận khác nếu có
+- Xác định rõ cách tạo từng sản phẩm
+- Có thể dùng singleton cho factory
 
 = Mã nguồn minh họa
-// Đoạn code minh họa cách sử dụng mẫu
+Factory pattern thường dùng qua interface IFactory, các implement tạo đối tượng cụ thể.
 
 = Ví dụ về các hệ thống thực tế
-// Nêu ra những ví dụ về các hệ thống thực tế đã được phát triển và đang chạy mà sử dụng mẫu này
+- UI framework (Swing, Qt) tạo các component khác nhau tùy platform
+- Database connection factories cho SQL Server, MySQL, Oracle
+- Trò chơi tạo các character từ những họ khác nhau
 
 = Các mẫu liên quan
-// Những mẫu nào có liên hệ với mẫu này, những điểm quan trọng cần phân biệt; mẫu này có thể dùng phối hợp với những mẫu nào
+Khác Factory Method (tạo một sản phẩm). Có thể dùng với Prototype, Builder.

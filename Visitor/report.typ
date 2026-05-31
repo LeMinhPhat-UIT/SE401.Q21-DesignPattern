@@ -1,43 +1,50 @@
 #set heading(level: 2)
 
 = Tên và Phân loại
-// Tên mẫu và phân loại (Creational/Structural/Behavioral)
+Visitor - Mẫu hành vi (Behavioral Pattern)
 
 = Mục đích, ý định
-// Mô tả ngắn gọn về mẫu thiết kế - mục đích chính của nó
+Cho phép định nghĩa các thao tác mới trên các phần tử của một cấu trúc đối tượng mà không thay đổi các lớp của những phần tử đó. Tách logic xử lý khỏi cấu trúc dữ liệu.
 
 = Bí danh
-// Các tên khác của mẫu này
+Không có
 
 = Motivation
-// Trình bày một tình huống cụ thể trong thiết kế phần mềm dẫn đến việc sử dụng mẫu này để giải quyết vấn đề
+Khi cần thực hiện nhiều thao tác khác nhau trên cùng một cấu trúc đối tượng phức tạp, thêm mỗi thao tác mới vào từng lớp sẽ làm cho code trở nên cồng kềnh. Visitor cho phép tách các thao tác ra khỏi cấu trúc.
 
 = Khả năng ứng dụng
-// Gợi ý các tình huống trong thiết kế mà có thể ứng dụng mẫu này
+- Cấu trúc đối tượng ít thay đổi nhưng thao tác hay thay đổi
+- Cần thực hiện các phép toán khác nhau trên các phần tử không liên quan
+- Cần thực hiện phép tính lặp lại hoặc báo cáo trên cấu trúc phức tạp
 
 = Cấu trúc
-// Mô tả mẫu bằng các ký hiệu đồ hình (OMT, UML, ...)
+Visitor khai báo một giao diện visit() cho mỗi loại phần tử. Các phần tử chấp nhận visitor và gọi phương thức visit tương ứng. ConcreteVisitor triển khai logic cho từng loại phần tử.
 
 = Các thành viên
-// Trình bày ý nghĩa của các lớp/đối tượng tham gia vào mẫu thiết kế và trách nhiệm của chúng
+- Visitor: giao diện định nghĩa phương thức visit cho mỗi loại phần tử
+- ConcreteVisitor: triển khai các phương thức visit cụ thể
+- Element: giao diện chấp nhận visitor
+- ConcreteElement: phần tử cụ thể, triển khai accept()
+- ObjectStructure: quản lý tập hợp các phần tử
 
 = Sự cộng tác
-// Các thành viên (lớp/đối tượng) của mẫu cộng tác như thế nào để thực hiện trách nhiệm của chúng
+Phần tử gọi accept(visitor), visitor gọi lại phương thức visit tương ứng của phần tử đó.
 
 = Các hệ quả mang lại, Ưu nhược điểm
-// Phân tích các hệ quả, ưu điểm và nhược điểm của mẫu
+*Ưu điểm:* Dễ dàng thêm thao tác mới; nhóm logic thao tác tại một chỗ.
+*Nhược điểm:* Khó thêm phần tử mới; vi phạm cấu trúc lớp.
 
 = Chú ý liên quan đến việc cài đặt
-// Các điểm cần lưu ý khi cài đặt mẫu này
-
-= Một số so sánh nếu có
-// So sánh với các mẫu khác hoặc các cách tiếp cận khác nếu có
+- Hãy xác định rõ tập hợp các phần tử sẽ được visitor xử lý
+- Visitor nên được thiết kế để có thể xử lý các phần tử tương ứng
 
 = Mã nguồn minh họa
-// Đoạn code minh họa cách sử dụng mẫu
+Visitor được sử dụng trong trình biên dịch, parser, hoặc khi cần in chi tiết cấu trúc dữ liệu phức tạp.
 
 = Ví dụ về các hệ thống thực tế
-// Nêu ra những ví dụ về các hệ thống thực tế đã được phát triển và đang chạy mà sử dụng mẫu này
+- Trình biên dịch: AST visitor cho mỗi loại nút
+- IDE: refactoring tool sử dụng visitor pattern
+- Document processors: tính toán thống kê tài liệu
 
 = Các mẫu liên quan
-// Những mẫu nào có liên hệ với mẫu này, những điểm quan trọng cần phân biệt; mẫu này có thể dùng phối hợp với những mẫu nào
+Khác với Composite (quản lý cấu trúc) về mục đích, nhưng thường dùng cùng nhau. Liên quan đến Strategy.

@@ -1,43 +1,50 @@
 #set heading(level: 2)
 
 = Tên và Phân loại
-// Tên mẫu và phân loại (Creational/Structural/Behavioral)
+Mediator - Mẫu hành vi (Behavioral Pattern)
 
 = Mục đích, ý định
-// Mô tả ngắn gọn về mẫu thiết kế - mục đích chính của nó
+Xác định một đối tượng trung gian để đơn giản hóa giao tiếp giữa các đối tượng. Giảm sự phụ thuộc lẫn nhau bằng cách cho các đối tượng giao tiếp qua mediator thay vì trực tiếp.
 
 = Bí danh
-// Các tên khác của mẫu này
+Intermediary, Controller
 
 = Motivation
-// Trình bày một tình huống cụ thể trong thiết kế phần mềm dẫn đến việc sử dụng mẫu này để giải quyết vấn đề
+Khi nhiều đối tượng cần giao tiếp phức tạp với nhau, chúng trở thành phụ thuộc chặt chẽ. Mediator tập trung logic giao tiếp.
 
 = Khả năng ứng dụng
-// Gợi ý các tình huống trong thiết kế mà có thể ứng dụng mẫu này
+- Tập hợp các đối tượng giao tiếp theo cách không thể kiểm soát được
+- Cần tái sử dụng đối tượng nhưng khó vì có nhiều tham chiếu tới các đối tượng khác
+- Hành vi phân tán giữa các lớp cần tập trung
 
 = Cấu trúc
-// Mô tả mẫu bằng các ký hiệu đồ hình (OMT, UML, ...)
+Mediator định nghĩa giao diện để giao tiếp. ConcreteMediator triển khai và phối hợp các Colleague.
 
 = Các thành viên
-// Trình bày ý nghĩa của các lớp/đối tượng tham gia vào mẫu thiết kế và trách nhiệm của chúng
+- Mediator: giao diện xác định phương thức giao tiếp
+- ConcreteMediator: triển khai giao tiếp và phối hợp Colleague
+- Colleague: giao diện các đối tượng tham gia
+- ConcreteColleague: giao tiếp qua mediator
 
 = Sự cộng tác
-// Các thành viên (lớp/đối tượng) của mẫu cộng tác như thế nào để thực hiện trách nhiệm của chúng
+Colleague gửi yêu cầu tới Mediator. Mediator phối hợp phản hồi từ các Colleague khác.
 
 = Các hệ quả mang lại, Ưu nhược điểm
-// Phân tích các hệ quả, ưu điểm và nhược điểm của mẫu
+*Ưu điểm:* Giảm sự phụ thuộc giữa các đối tượng; tập trung logic giao tiếp.
+*Nhược điểm:* Mediator có thể trở thành "God Object"; khó bảo trì nếu logic phức tạp.
 
 = Chú ý liên quan đến việc cài đặt
-// Các điểm cần lưu ý khi cài đặt mẫu này
-
-= Một số so sánh nếu có
-// So sánh với các mẫu khác hoặc các cách tiếp cận khác nếu có
+- Xác định tập hợp Colleague và cách giao tiếp
+- Đảm bảo Mediator không vi phạm Single Responsibility
 
 = Mã nguồn minh họa
-// Đoạn code minh họa cách sử dụng mẫu
+Các đối tượng dialog, event handlers trong UI framework.
 
 = Ví dụ về các hệ thống thực tế
-// Nêu ra những ví dụ về các hệ thống thực tế đã được phát triển và đang chạy mà sử dụng mẫu này
+- Dialog box: các control giao tiếp qua dialog
+- Chat room: người dùng giao tiếp qua phòng
+- Air traffic control: máy bay giao tiếp qua tower
+- Event-driven systems
 
 = Các mẫu liên quan
-// Những mẫu nào có liên hệ với mẫu này, những điểm quan trọng cần phân biệt; mẫu này có thể dùng phối hợp với những mẫu nào
+Liên quan đến Observer (thông báo), Facade (đơn giản giao diện).

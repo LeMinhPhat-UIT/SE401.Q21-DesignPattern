@@ -1,43 +1,52 @@
 #set heading(level: 2)
 
 = Tên và Phân loại
-// Tên mẫu và phân loại (Creational/Structural/Behavioral)
+Interpreter - Mẫu hành vi (Behavioral Pattern)
 
 = Mục đích, ý định
-// Mô tả ngắn gọn về mẫu thiết kế - mục đích chính của nó
+Xác định cách biểu diễn một ngôn ngữ cụ thể và xây dựng trình thông dịch để xử lý các câu trong ngôn ngữ đó.
 
 = Bí danh
-// Các tên khác của mẫu này
+Không có
 
 = Motivation
-// Trình bày một tình huống cụ thể trong thiết kế phần mềm dẫn đến việc sử dụng mẫu này để giải quyết vấn đề
+Cần xử lý một ngôn ngữ hay ký pháp đặc biệt. Interpreter cho phép xây dựng một cấu trúc biểu diễn văn pháp và thực hiện các phép tính.
 
 = Khả năng ứng dụng
-// Gợi ý các tình huống trong thiết kế mà có thể ứng dụng mẫu này
+- Ngôn ngữ cần được định nghĩa có thể được biểu diễn dưới dạng cây cú pháp
+- Hiệu suất không phải vấn đề chính
+- Độ phức tạp của ngôn ngữ vừa phải
+- Cần linh hoạt thêm câu lệnh mới
 
 = Cấu trúc
-// Mô tả mẫu bằng các ký hiệu đồ hình (OMT, UML, ...)
+AbstractExpression khai báo phương thức interpret(). ConcreteExpression triển khai phương thức này. Các expression tổ hợp thành cây cú pháp.
 
 = Các thành viên
-// Trình bày ý nghĩa của các lớp/đối tượng tham gia vào mẫu thiết kế và trách nhiệm của chúng
+- AbstractExpression: giao diện cơ sở cho các biểu thức
+- ConcreteExpression: triển khai interpret() cho terminal/nonterminal
+- Context: lưu trữ thông tin toàn cục
+- Client: xây dựng cây cú pháp và gọi interpret
 
 = Sự cộng tác
-// Các thành viên (lớp/đối tượng) của mẫu cộng tác như thế nào để thực hiện trách nhiệm của chúng
+Client xây dựng cây biểu thức. Mỗi nút gọi interpret() đệ quy trên các nút con.
 
 = Các hệ quả mang lại, Ưu nhược điểm
-// Phân tích các hệ quả, ưu điểm và nhược điểm của mẫu
+*Ưu điểm:* Dễ thêm phép tính mới; biểu diễn ngôn ngữ linh hoạt.
+*Nhược điểm:* Khó thêm quy tắc ngữ pháp; hiệu suất thấp với ngôn ngữ phức tạp.
 
 = Chú ý liên quan đến việc cài đặt
-// Các điểm cần lưu ý khi cài đặt mẫu này
-
-= Một số so sánh nếu có
-// So sánh với các mẫu khác hoặc các cách tiếp cận khác nếu có
+- Xác định rõ ngữ pháp của ngôn ngữ
+- Triển khai parser để xây dựng cây
+- Quản lý Context cẩn thận
 
 = Mã nguồn minh họa
-// Đoạn code minh họa cách sử dụng mẫu
+Biểu thức số học, ký pháp logic, hay các mini-language.
 
 = Ví dụ về các hệ thống thực tế
-// Nêu ra những ví dụ về các hệ thống thực tế đã được phát triển và đang chạy mà sử dụng mẫu này
+- Biểu thức số học trong máy tính
+- SQL query interpreter
+- Expression evaluator
+- Regular expression engine
 
 = Các mẫu liên quan
-// Những mẫu nào có liên hệ với mẫu này, những điểm quan trọng cần phân biệt; mẫu này có thể dùng phối hợp với những mẫu nào
+Liên quan đến Composite (cây cú pháp), Visitor (xử lý cây).

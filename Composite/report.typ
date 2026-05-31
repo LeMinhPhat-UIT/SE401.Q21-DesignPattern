@@ -1,43 +1,50 @@
 #set heading(level: 2)
 
 = Tên và Phân loại
-// Tên mẫu và phân loại (Creational/Structural/Behavioral)
+Composite - Mẫu cấu trúc (Structural Pattern)
 
 = Mục đích, ý định
-// Mô tả ngắn gọn về mẫu thiết kế - mục đích chính của nó
+Soạn các đối tượng thành cấu trúc cây để biểu diễn các phần-toàn thể. Cho phép client xử lý các đối tượng riêng lẻ và tổ hợp của chúng một cách thống nhất.
 
 = Bí danh
-// Các tên khác của mẫu này
+Part-Whole
 
 = Motivation
-// Trình bày một tình huống cụ thể trong thiết kế phần mềm dẫn đến việc sử dụng mẫu này để giải quyết vấn đề
+Trong các ứng dụng có cấu trúc cây (file system, UI components), cần xử lý cả phần tử đơn lẻ và tập hợp phần tử. Composite cho phép cách tiếp cận thống nhất.
 
 = Khả năng ứng dụng
-// Gợi ý các tình huống trong thiết kế mà có thể ứng dụng mẫu này
+- Biểu diễn các cấu trúc part-whole dưới dạng cây
+- Muốn client không cần phân biệt đối tượng riêng lẻ hay tổ hợp
+- Cần hỗ trợ các phép toán trên cây đối tượng
 
 = Cấu trúc
-// Mô tả mẫu bằng các ký hiệu đồ hình (OMT, UML, ...)
+Component là giao diện chung. Leaf là phần tử lá (không có con). Composite là phần tử chứa các component khác.
 
 = Các thành viên
-// Trình bày ý nghĩa của các lớp/đối tượng tham gia vào mẫu thiết kế và trách nhiệm của chúng
+- Component: giao diện chung cho phần tử và tổ hợp
+- Leaf: phần tử lá, không có con
+- Composite: chứa danh sách component và cho phép thêm/xóa
+- Client: làm việc qua giao diện Component
 
 = Sự cộng tác
-// Các thành viên (lớp/đối tượng) của mẫu cộng tác như thế nào để thực hiện trách nhiệm của chúng
+Client làm việc qua giao diện Component. Composite ủy nhiệm các thao tác cho các component con.
 
 = Các hệ quả mang lại, Ưu nhược điểm
-// Phân tích các hệ quả, ưu điểm và nhược điểm của mẫu
+*Ưu điểm:* Tạo cấu trúc phân cấp sạch; dễ thêm thành phần mới.
+*Nhược điểm:* Khó hạn chế các loại component; có thể quá tổng quát.
 
 = Chú ý liên quan đến việc cài đặt
-// Các điểm cần lưu ý khi cài đặt mẫu này
-
-= Một số so sánh nếu có
-// So sánh với các mẫu khác hoặc các cách tiếp cận khác nếu có
+- Thiết kế giao diện Component cẩn thận
+- Quản lý danh sách con trong Composite
 
 = Mã nguồn minh họa
-// Đoạn code minh họa cách sử dụng mẫu
+File system là ví dụ: Directory chứa File và Directory con.
 
 = Ví dụ về các hệ thống thực tế
-// Nêu ra những ví dụ về các hệ thống thực tế đã được phát triển và đang chạy mà sử dụng mẫu này
+- File system (folder, file)
+- UI framework (panel, button, textbox)
+- Document structure (chapters, sections, paragraphs)
+- Biểu diễn cây tổ chức công ty
 
 = Các mẫu liên quan
-// Những mẫu nào có liên hệ với mẫu này, những điểm quan trọng cần phân biệt; mẫu này có thể dùng phối hợp với những mẫu nào
+Thường dùng với Iterator, Visitor. Tương tự Iterator nhưng cho cấu trúc.

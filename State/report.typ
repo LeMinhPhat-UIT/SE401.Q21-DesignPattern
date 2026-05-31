@@ -1,43 +1,49 @@
 #set heading(level: 2)
 
 = Tên và Phân loại
-// Tên mẫu và phân loại (Creational/Structural/Behavioral)
+State - Mẫu hành vi (Behavioral Pattern)
 
 = Mục đích, ý định
-// Mô tả ngắn gọn về mẫu thiết kế - mục đích chính của nó
+Cho phép một đối tượng thay đổi hành vi của nó khi trạng thái nội bộ của nó thay đổi. Tách logic trạng thái khỏi lớp chính.
 
 = Bí danh
-// Các tên khác của mẫu này
+Objects for States
 
 = Motivation
-// Trình bày một tình huống cụ thể trong thiết kế phần mềm dẫn đến việc sử dụng mẫu này để giải quyết vấn đề
+Khi một đối tượng có hành vi phụ thuộc vào trạng thái và cần thay đổi hành vi khi trạng thái thay đổi, code sẽ chứa nhiều if-else. State pattern giải quyết bằng cách tạo các lớp trạng thái.
 
 = Khả năng ứng dụng
-// Gợi ý các tình huống trong thiết kế mà có thể ứng dụng mẫu này
+- Hành vi của đối tượng phụ thuộc vào trạng thái và thay đổi tại runtime
+- Có các nhánh lớn phụ thuộc vào trạng thái hiện tại
+- Mã có nhiều if-else hoặc switch-case kiểm tra trạng thái
 
 = Cấu trúc
-// Mô tả mẫu bằng các ký hiệu đồ hình (OMT, UML, ...)
+State định nghĩa giao diện cho các hành vi trạng thái. ConcreteState triển khai hành vi cụ thể cho từng trạng thái. Context chứa một State hiện tại.
 
 = Các thành viên
-// Trình bày ý nghĩa của các lớp/đối tượng tham gia vào mẫu thiết kế và trách nhiệm của chúng
+- State: giao diện định nghĩa các phương thức cho mỗi trạng thái
+- ConcreteState: triển khai hành vi cho một trạng thái cụ thể
+- Context: định nghĩa giao diện cho client, giữ tham chiếu ConcreteState
 
 = Sự cộng tác
-// Các thành viên (lớp/đối tượng) của mẫu cộng tác như thế nào để thực hiện trách nhiệm của chúng
+Context ủy nhiệm yêu cầu cho ConcreteState hiện tại. State có thể chuyển Context sang state khác.
 
 = Các hệ quả mang lại, Ưu nhược điểm
-// Phân tích các hệ quả, ưu điểm và nhược điểm của mẫu
+*Ưu điểm:* Loại bỏ if-else; dễ thêm trạng thái mới; tách logic trạng thái.
+*Nhược điểm:* Tăng số lớp; có thể phức tạp hóa code nếu trạng thái ít.
 
 = Chú ý liên quan đến việc cài đặt
-// Các điểm cần lưu ý khi cài đặt mẫu này
-
-= Một số so sánh nếu có
-// So sánh với các mẫu khác hoặc các cách tiếp cận khác nếu có
+- Xác định rõ tất cả trạng thái có thể
+- Xem xét ai chuyển trạng thái: Context hay State
 
 = Mã nguồn minh họa
-// Đoạn code minh họa cách sử dụng mẫu
+Máy trạng thái: Connection (Connected, Disconnected, Connecting).
 
 = Ví dụ về các hệ thống thực tế
-// Nêu ra những ví dụ về các hệ thống thực tế đã được phát triển và đang chạy mà sử dụng mẫu này
+- TCP Connection: Established, Listen, Closed
+- Order: Pending, Processing, Shipped, Delivered
+- Traffic light: Red, Yellow, Green
+- Media player: Playing, Paused, Stopped
 
 = Các mẫu liên quan
-// Những mẫu nào có liên hệ với mẫu này, những điểm quan trọng cần phân biệt; mẫu này có thể dùng phối hợp với những mẫu nào
+Liên quan đến Strategy (chọn thuật toán). Khác ở chỗ State tự chuyển đổi.
