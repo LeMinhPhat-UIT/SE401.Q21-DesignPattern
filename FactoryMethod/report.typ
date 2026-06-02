@@ -1,7 +1,3 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
 
 == Tên và phân loại
 
@@ -20,10 +16,6 @@ Factory Method cho phép một lớp trì hoãn việc khởi tạo sang lớp c
 - Lớp cha xác định *khi nào* và *cách sử dụng* sản phẩm thông qua interface chung.
 - Lớp con xác định *sản phẩm cụ thể* nào được tạo ra bằng cách override factory method.
 - Client làm việc hoàn toàn qua abstraction, không phụ thuộc vào class cụ thể.
-
-== Bí danh
-
-Factory Method còn được gọi với tên *Virtual Constructor* (Hàm khởi tạo ảo), vì cơ chế của nó hoạt động tương tự hàm khởi tạo nhưng có tính đa hình như phương thức ảo: kiểu đối tượng được tạo ra phụ thuộc vào kiểu runtime của creator, không phải kiểu compile-time.
 
 == Vấn đề cần giải quyết (Motivation)
 

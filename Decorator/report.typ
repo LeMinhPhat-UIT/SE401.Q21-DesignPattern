@@ -6,9 +6,6 @@ Decorator (Trang trí) — Structural
 = Mục đích, ý định
 Gắn thêm trách nhiệm (hành vi) cho đối tượng một cách linh hoạt trong lúc chạy, thay vì tạo nhiều lớp con cố định.
 
-= Bí danh
-Wrapper
-
 = Motivation
 Khi cần thêm nhiều biến thể tính năng (ví dụ: thông báo + log + mã hóa + nén) theo tổ hợp, kế thừa sẽ bùng nổ số lớp. Decorator cho phép “bọc” đối tượng bằng các lớp bổ sung để ghép tính năng linh hoạt.
 

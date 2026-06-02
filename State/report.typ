@@ -6,9 +6,6 @@ State - Mẫu hành vi (Behavioral Pattern)
 = Mục đích, ý định
 Cho phép một đối tượng thay đổi hành vi của nó khi trạng thái nội bộ của nó thay đổi. Tách logic trạng thái khỏi lớp chính.
 
-= Bí danh
-Objects for States
-
 = Motivation
 Khi một đối tượng có hành vi phụ thuộc vào trạng thái và cần thay đổi hành vi khi trạng thái thay đổi, code sẽ chứa nhiều if-else. State pattern giải quyết bằng cách tạo các lớp trạng thái.
 

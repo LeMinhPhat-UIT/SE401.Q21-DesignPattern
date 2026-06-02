@@ -1,7 +1,3 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
 
 
 == Tên và phân loại
@@ -389,7 +385,9 @@ Client chỉ gọi `Pay(order)`. Nó không cần quan tâm bên trong có nhữ
   [*Nhược điểm*], [*Giải thích*],
   [Phụ thuộc vào kế thừa], [Class con bị ràng buộc vào class cha, kém linh hoạt hơn composition.],
   [Class cha có thể khó hiểu], [Nếu workflow lớn và có nhiều hook, abstract class dễ trở nên phức tạp.],
-  [Class con bị giới hạn bởi khung thuật toán], [Nếu class con cần workflow rất khác, Template Method không còn phù hợp.],
+  [Class con bị giới hạn bởi khung thuật toán],
+  [Nếu class con cần workflow rất khác, Template Method không còn phù hợp.],
+
   [Có thể vi phạm LSP], [Nếu class con override sai ý đồ, behavior có thể không còn đúng với kỳ vọng của class cha.],
   [Khó đổi thuật toán lúc runtime], [Vì variation nằm trong class con, không linh hoạt bằng Strategy.],
 )
@@ -460,7 +458,10 @@ Ví dụ phù hợp:
   align: (left, left, left),
   [*Tiêu chí*], [*Template Method*], [*Hook Method*],
   [Vai trò], [Method chính định nghĩa workflow.], [Điểm mở rộng tùy chọn trong workflow.],
-  [Có bắt buộc override không?], [Không nên override template method nếu muốn giữ workflow.], [Không bắt buộc override.],
+  [Có bắt buộc override không?],
+  [Không nên override template method nếu muốn giữ workflow.],
+  [Không bắt buộc override.],
+
   [Thường nằm ở đâu?], [Class cha.], [Class cha.],
   [Ví dụ], [`Pay()`], [`BeforePayment()`, `ShouldSendNotification()`],
 )
@@ -490,7 +491,9 @@ Ví dụ phù hợp:
   [Mục đích], [Cố định workflow và cho class con tùy biến bước.], [Bọc object để thêm hành vi mới.],
   [Cơ chế], [Kế thừa.], [Composition/wrapping.],
   [Thời điểm mở rộng], [Thông qua subclass.], [Thông qua wrapper object.],
-  [Ví dụ], [Các class thanh toán override `ProcessPayment()`.], [`LoggingPaymentGateway` bọc payment gateway để thêm logging.],
+  [Ví dụ],
+  [Các class thanh toán override `ProcessPayment()`.],
+  [`LoggingPaymentGateway` bọc payment gateway để thêm logging.],
 )
 
 == Kết luận

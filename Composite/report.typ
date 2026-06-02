@@ -6,9 +6,6 @@ Composite - Mẫu cấu trúc (Structural Pattern)
 = Mục đích, ý định
 Soạn các đối tượng thành cấu trúc cây để biểu diễn các phần-toàn thể. Cho phép client xử lý các đối tượng riêng lẻ và tổ hợp của chúng một cách thống nhất.
 
-= Bí danh
-Part-Whole
-
 = Motivation
 Trong các ứng dụng có cấu trúc cây (file system, UI components), cần xử lý cả phần tử đơn lẻ và tập hợp phần tử. Composite cho phép cách tiếp cận thống nhất.
 

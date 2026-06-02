@@ -1,7 +1,3 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
 
 == Tên và Phân loại
 
@@ -20,14 +16,6 @@ Mục đích chính của Builder là xây dựng một đối tượng phức t
 - Tránh constructor quá dài hoặc telescoping constructor.
 - Tạo nhiều cấu hình sản phẩm khác nhau từ cùng một builder.
 
-== Bí danh
-
-Builder Pattern còn có thể được gọi là:
-
-- *Mẫu xây dựng*.
-- *Step-by-step object construction pattern*.
-
-Trong một số framework, ý tưởng tương tự còn xuất hiện dưới tên *Fluent Builder* khi các bước build trả về chính builder để chain method.
 
 == Motivation
 

@@ -1,7 +1,3 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
 
 == Tên và Phân loại
 
@@ -21,13 +17,6 @@ Mục đích chính của Command là *biến một hành động thành object*
 - Dễ log, queue, replay thao tác.
 - Dễ ghép macro command (một lệnh gồm nhiều lệnh con).
 
-== Bí danh
-
-Command Pattern thường được nhắc bằng các tên:
-
-- *Action* (trong nhiều GUI framework).
-- *Transaction object* (khi command mang tính giao dịch và có undo).
-- *Request object pattern*.
 
 == Motivation
 

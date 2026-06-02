@@ -1,7 +1,3 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
 
 
 == Tên và Phân loại
@@ -21,21 +17,6 @@ Mục đích chính của Proxy là cung cấp một lớp trung gian để thê
 - Tối ưu hiệu năng thông qua cache.
 - Ghi log, đo thời gian, audit mà không sửa logic lõi.
 - Ẩn truy cập từ xa (remote object) như truy cập cục bộ.
-
-== Bí danh
-
-Proxy Pattern còn được gọi với các tên:
-
-- *Surrogate*.
-- *Placeholder*.
-- *Wrapper kiểm soát truy cập*.
-
-Một số biến thể thường gặp:
-
-- *Virtual Proxy* (trì hoãn khởi tạo).
-- *Protection Proxy* (kiểm soát quyền).
-- *Remote Proxy* (đại diện đối tượng ở tiến trình/máy khác).
-- *Caching/Smart Proxy* (cache, reference counting, logging).
 
 == Motivation
 
@@ -291,15 +272,15 @@ Luồng hoạt động điển hình:
 == Lỗi thường gặp và cách tránh
 
 - Đưa nghiệp vụ lõi vào proxy:
-	Proxy chỉ nên xử lý control concerns; nghiệp vụ chính để ở real subject.
+  Proxy chỉ nên xử lý control concerns; nghiệp vụ chính để ở real subject.
 - Quên đồng bộ khi proxy có trạng thái dùng chung:
-	Dùng lock/thread-safe collection hoặc thiết kế stateless.
+  Dùng lock/thread-safe collection hoặc thiết kế stateless.
 - Cache không invalidation:
-	Định nghĩa chiến lược invalidation ngay từ đầu thay vì xử lý vá lỗi.
+  Định nghĩa chiến lược invalidation ngay từ đầu thay vì xử lý vá lỗi.
 - Bắt mọi exception rồi nuốt lỗi:
-	Cần phân biệt lỗi business và lỗi kỹ thuật, log có cấu trúc.
+  Cần phân biệt lỗi business và lỗi kỹ thuật, log có cấu trúc.
 - Lộ khác biệt hành vi giữa proxy và real subject:
-	Đảm bảo tính thay thế (LSP), cùng semantics cho cùng request.
+  Đảm bảo tính thay thế (LSP), cùng semantics cho cùng request.
 
 == Mã nguồn minh họa
 

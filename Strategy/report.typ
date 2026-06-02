@@ -1,7 +1,3 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
 
 
 == Tên và Phân loại
@@ -20,13 +16,6 @@ Mục đích chính của Strategy là tách phần "thuật toán có thể tha
 - Tránh chuỗi `if/else` hoặc `switch` lớn theo kiểu xử lý.
 - Cho phép thay đổi hành vi lúc runtime mà không sửa context.
 - Tăng khả năng mở rộng, kiểm thử và tái sử dụng thuật toán.
-
-== Bí danh
-
-Strategy Pattern còn được nhắc đến với các tên:
-
-- *Policy Pattern*.
-- *Algorithm Family Pattern*.
 
 == Motivation
 
