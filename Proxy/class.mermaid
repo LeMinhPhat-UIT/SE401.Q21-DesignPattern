@@ -1,0 +1,26 @@
+---
+title: Proxy class diagram
+---
+classDiagram
+    class Subject {
+      <<interface>>
+      +display()
+    }
+
+    class RealSubject {
+      -fileName : string
+      +display()
+      -loadFromDisk()
+    }
+
+    class Proxy {
+      -realSubject : RealSubject
+      -role : string
+      +display()
+      -checkAccess() boolean
+      -logAccess()
+    }
+
+    Subject <|.. RealSubject
+    Subject <|.. Proxy
+    Proxy --> RealSubject : controls access/lazy init
