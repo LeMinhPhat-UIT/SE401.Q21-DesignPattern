@@ -3,8 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Adapter (Phát)
-
 == Tên và phân loại
 
 *Adapter Pattern* còn được gọi là *Wrapper* hoặc *Translator*. Trong tiếng Việt, có thể hiểu đây là *mẫu chuyển đổi giao diện*.

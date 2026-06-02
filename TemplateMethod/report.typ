@@ -3,7 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Template Method Pattern
 
 == Tên và phân loại
 

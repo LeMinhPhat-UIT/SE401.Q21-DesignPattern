@@ -3,7 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Strategy Pattern
 
 == Tên và Phân loại
 
@@ -236,7 +235,7 @@ Context --> Client : fee
 
 == Mã nguồn minh họa
 
-Ví dụ C# tính phí vận chuyển theo strategy:
+Ví dụ C\# tính phí vận chuyển theo strategy:
 
 ```csharp
 using System;

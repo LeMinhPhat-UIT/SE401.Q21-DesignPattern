@@ -3,8 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Chain of Responsibility Pattern
-
 == Tên và phân loại
 
 *Chain of Responsibility Pattern* thường được viết tắt là *CoR*. Trong tiếng Việt, có thể hiểu là *mẫu chuỗi trách nhiệm*.

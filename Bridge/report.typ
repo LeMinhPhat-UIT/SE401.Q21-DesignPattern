@@ -3,8 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Bridge Pattern
-
 == Tên và phân loại
 
 *Bridge Pattern* trong tiếng Việt thường được gọi là *mẫu Cầu nối*.
@@ -32,7 +30,7 @@ UrgentSmsNotification
 ...
 ```
 
-Khi có $m$ loại thông báo và $n$ kênh gửi, số class có thể tăng gần $m \times n$.
+Khi có $m$ loại thông báo và $n$ kênh gửi, số class có thể tăng gần $m * n$.
 
 Cách làm này dẫn tới:
 

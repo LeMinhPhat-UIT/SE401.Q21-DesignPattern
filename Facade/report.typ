@@ -3,8 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Facade Pattern
-
 == Tên và phân loại
 
 *Facade Pattern* có thể hiểu là *mẫu mặt tiền*. Từ "facade" mang nghĩa là mặt ngoài hoặc lớp giao diện phía trước của một công trình. Trong thiết kế phần mềm, Facade đóng vai trò tương tự: nó đứng phía trước một hệ thống con phức tạp và cung cấp cho client một cách sử dụng đơn giản hơn.

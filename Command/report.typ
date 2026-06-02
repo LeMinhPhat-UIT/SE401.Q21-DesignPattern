@@ -3,8 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Command Pattern
-
 == Tên và Phân loại
 
 *Command Pattern* là một mẫu thiết kế thuộc nhóm *Behavioral Pattern*.
@@ -239,7 +237,7 @@ Có thể kết hợp: mỗi handler trong chain thực thi một command.
 
 == Mã nguồn minh họa
 
-Ví dụ C# đơn giản có undo/redo cho tài khoản ngân hàng.
+Ví dụ C\# đơn giản có undo/redo cho tài khoản ngân hàng.
 
 ```csharp
 using System;

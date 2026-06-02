@@ -3,8 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Builder Pattern
-
 == Tên và Phân loại
 
 *Builder Pattern* là một mẫu thiết kế thuộc nhóm *Creational Pattern* (nhóm khởi tạo).

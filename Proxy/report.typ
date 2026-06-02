@@ -3,7 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Proxy Pattern
 
 == Tên và Phân loại
 
@@ -304,7 +303,7 @@ Luồng hoạt động điển hình:
 
 == Mã nguồn minh họa
 
-Ví dụ C# dưới đây minh họa *Protection + Virtual Proxy*:
+Ví dụ C\# dưới đây minh họa *Protection + Virtual Proxy*:
 
 ```csharp
 using System;

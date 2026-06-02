@@ -3,8 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Flyweight Pattern
-
 == Tên và phân loại
 
 *Flyweight Pattern* có thể hiểu là *mẫu hạng ruồi* hoặc *mẫu đối tượng nhẹ*. Tên gọi này nhấn mạnh mục tiêu chính của pattern: làm cho hệ thống sử dụng các object nhẹ hơn bằng cách chia sẻ những dữ liệu giống nhau giữa nhiều object.

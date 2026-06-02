@@ -3,8 +3,6 @@
 #set heading(numbering: "1.")
 #set par(justify: true, leading: 0.65em)
 
-= Factory Method Pattern
-
 == Tên và phân loại
 
 *Factory Method Pattern* trong tiếng Việt thường được gọi là *mẫu Phương thức Factory*.
