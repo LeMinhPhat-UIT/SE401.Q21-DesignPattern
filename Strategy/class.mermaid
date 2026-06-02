@@ -1,0 +1,35 @@
+---
+title: Strategy class diagram
+---
+classDiagram
+    class IShippingStrategy {
+      <<interface>>
+      +calculateFee(orderTotal, weightKg, distanceKm)
+      +getName()
+    }
+
+    class StandardShipping {
+      +calculateFee(orderTotal, weightKg, distanceKm)
+      +getName()
+    }
+
+    class ExpressShipping {
+      +calculateFee(orderTotal, weightKg, distanceKm)
+      +getName()
+    }
+
+    class SameDayShipping {
+      +calculateFee(orderTotal, weightKg, distanceKm)
+      +getName()
+    }
+
+    class CheckoutContext {
+      -strategy : IShippingStrategy
+      +setStrategy(strategy)
+      +calculateShipping(orderTotal, weightKg, distanceKm)
+    }
+
+    IShippingStrategy <|.. StandardShipping
+    IShippingStrategy <|.. ExpressShipping
+    IShippingStrategy <|.. SameDayShipping
+    CheckoutContext --> IShippingStrategy : uses
