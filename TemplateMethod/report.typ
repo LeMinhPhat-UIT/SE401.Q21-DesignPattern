@@ -127,39 +127,6 @@ public abstract class PaymentProcessor
 
 === UML tổng quát
 
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-abstract class AbstractClass {
-  +TemplateMethod()
-  #StepOne()
-  #StepTwo()
-  #StepThree()
-  #Hook()
-}
-
-class ConcreteClassA {
-  #StepTwo()
-  #StepThree()
-}
-
-class ConcreteClassB {
-  #StepTwo()
-  #StepThree()
-  #Hook()
-}
-
-AbstractClass <|-- ConcreteClassA
-AbstractClass <|-- ConcreteClassB
-
-note right of AbstractClass
-  TemplateMethod() cố định workflow.
-  Các Step/Hook là điểm tùy biến.
-end note
-@enduml
-```
-
 #figure(
   image("diagrams/template-method-structure.svg", width: 100%),
   caption: [Cấu trúc UML tổng quát của Template Method],
@@ -167,48 +134,6 @@ end note
 
 
 === UML ví dụ PaymentProcessor
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class Order {
-  +Id: Guid
-  +Total: decimal
-  +Status: string
-}
-
-abstract class PaymentProcessor {
-  +Pay(order: Order)
-  #ValidateOrder(order: Order)
-  #CalculateAmount(order: Order): decimal
-  #BeforePayment(order: Order)
-  #ProcessPayment(amount: decimal)
-  #UpdateOrderStatus(order: Order)
-  #ShouldSendNotification(): bool
-  #SendNotification(order: Order)
-}
-
-class CreditCardPaymentProcessor {
-  #BeforePayment(order: Order)
-  #ProcessPayment(amount: decimal)
-}
-
-class MomoPaymentProcessor {
-  #ProcessPayment(amount: decimal)
-}
-
-class CashPaymentProcessor {
-  #ProcessPayment(amount: decimal)
-  #ShouldSendNotification(): bool
-}
-
-PaymentProcessor <|-- CreditCardPaymentProcessor
-PaymentProcessor <|-- MomoPaymentProcessor
-PaymentProcessor <|-- CashPaymentProcessor
-PaymentProcessor --> Order
-@enduml
-```
 
 #figure(
   image("diagrams/template-method-payment-example.svg", width: 100%),
@@ -229,24 +154,6 @@ Luồng hoạt động của Template Method:
 7. Client nhận kết quả mà không cần biết chi tiết từng bước.
 
 Sequence diagram:
-
-```plantuml
-@startuml
-actor Client
-participant "ConcretePaymentProcessor" as Concrete
-participant "PaymentProcessor" as Base
-
-Client -> Concrete: Pay(order)
-activate Concrete
-Concrete -> Base: ValidateOrder(order)
-Concrete -> Base: CalculateAmount(order)
-Concrete -> Concrete: ProcessPayment(amount)
-Concrete -> Base: UpdateOrderStatus(order)
-Concrete -> Base: SendNotification(order)
-Concrete --> Client: done
-deactivate Concrete
-@enduml
-```
 
 #figure(
   image("diagrams/template-method-sequence.svg", width: 100%),

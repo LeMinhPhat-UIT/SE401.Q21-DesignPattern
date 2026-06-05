@@ -174,34 +174,6 @@ Các thành phần chính của Prototype Pattern gồm:
 
 Sơ đồ tổng quát:
 
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-interface Prototype {
-  +Clone(): Prototype
-}
-
-class ConcretePrototype {
-  -state: string
-  -items: List<string>
-  +Clone(): Prototype
-}
-
-class Client {
-  +Operation(): void
-}
-
-Prototype <|.. ConcretePrototype
-Client --> Prototype : uses
-
-note right of ConcretePrototype
-Clone() có thể là shallow copy,
-deep copy hoặc copy có chọn lọc.
-end note
-@enduml
-```
-
 #figure(
   image("diagrams/prototype-structure.svg", width: 100%),
   caption: [Cấu trúc UML tổng quát của Prototype Pattern],
@@ -209,36 +181,6 @@ end note
 
 
 Sơ đồ có Prototype Registry:
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-interface Prototype {
-  +Clone(): Prototype
-}
-
-class ConcretePrototype {
-  -state: string
-  +Clone(): Prototype
-}
-
-class PrototypeRegistry {
-  -prototypes: Dictionary<string, Prototype>
-  +Register(key: string, prototype: Prototype): void
-  +Create(key: string): Prototype
-}
-
-class Client {
-  -registry: PrototypeRegistry
-  +Operation(): void
-}
-
-Prototype <|.. ConcretePrototype
-PrototypeRegistry o--> Prototype : stores
-Client --> PrototypeRegistry : requests clone
-@enduml
-```
 
 #figure(
   image("diagrams/prototype-registry.svg", width: 100%),
@@ -258,23 +200,6 @@ Luồng hoạt động cơ bản của Prototype Pattern:
 6. Client có thể tùy chỉnh thêm một vài thuộc tính nếu cần.
 
 Biểu diễn dạng sequence:
-
-```plantuml
-@startuml
-actor Client
-participant "PrototypeRegistry" as Registry
-participant "Prototype" as Prototype
-participant "Cloned Object" as Clone
-
-Client -> Registry: Create("goblin")
-Registry -> Prototype: Clone()
-Prototype -> Clone: create copy
-Clone --> Prototype: copied object
-Prototype --> Registry: cloned object
-Registry --> Client: cloned object
-Client -> Clone: customize position/level
-@enduml
-```
 
 #figure(
   image("diagrams/prototype-sequence.svg", width: 100%),
@@ -428,46 +353,6 @@ Trong ví dụ trên:
 )
 
 === Class diagram cho ví dụ
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-interface IEnemyPrototype {
-  +Clone(): IEnemyPrototype
-}
-
-class Enemy {
-  +Name: string
-  +Health: int
-  +Damage: int
-  +Level: int
-  +Position: Position
-  +Skills: List<string>
-  +Clone(): IEnemyPrototype
-}
-
-class Position {
-  +X: int
-  +Y: int
-}
-
-class EnemyRegistry {
-  -prototypes: Dictionary<string, IEnemyPrototype>
-  +Register(key: string, prototype: IEnemyPrototype): void
-  +Create(key: string): Enemy
-}
-
-class Program {
-  +Main(): void
-}
-
-IEnemyPrototype <|.. Enemy
-Enemy *-- Position
-EnemyRegistry o--> IEnemyPrototype
-Program --> EnemyRegistry
-@enduml
-```
 
 #figure(
   image("diagrams/prototype-enemy-example.svg", width: 100%),

@@ -152,50 +152,6 @@ Trong triển khai thực tế, có thể không cần tách `Flyweight` interfa
 
 Sơ đồ tổng quát:
 
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class Client
-
-class Context {
-  - uniqueState: string
-  - flyweight: Flyweight
-  + Operation(): void
-}
-
-interface Flyweight {
-  + Operation(extrinsicState: string): void
-}
-
-class ConcreteFlyweight {
-  - intrinsicState: string
-  + Operation(extrinsicState: string): void
-}
-
-class FlyweightFactory {
-  - cache: Dictionary<string, Flyweight>
-  + GetFlyweight(key: string): Flyweight
-}
-
-Client --> Context : creates/uses
-Context o--> Flyweight : uses
-ConcreteFlyweight ..|> Flyweight
-FlyweightFactory --> Flyweight : returns
-Client --> FlyweightFactory : requests
-
-note right of Flyweight
-  Chứa intrinsic state:
-  dữ liệu dùng chung
-end note
-
-note bottom of Context
-  Chứa extrinsic state:
-  dữ liệu riêng từng object
-end note
-@enduml
-```
-
 #figure(
   image("diagrams/flyweight-structure.svg", width: 100%),
   caption: [Cấu trúc UML tổng quát của Flyweight Pattern],
@@ -212,53 +168,6 @@ end note
 == UML ví dụ: rừng cây
 
 Ví dụ phổ biến nhất của Flyweight là hệ thống vẽ rừng cây. Nhiều cây có vị trí khác nhau nhưng có thể dùng chung loại cây.
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class Forest {
-  - trees: List<Tree>
-  - factory: TreeTypeFactory
-  + PlantTree(x: int, y: int, name: string, color: string, texture: string): void
-  + Draw(): void
-}
-
-class Tree {
-  - x: int
-  - y: int
-  - type: TreeType
-  + Draw(): void
-}
-
-class TreeType {
-  - name: string
-  - color: string
-  - texture: string
-  + Draw(x: int, y: int): void
-}
-
-class TreeTypeFactory {
-  - treeTypes: Dictionary<string, TreeType>
-  + GetTreeType(name: string, color: string, texture: string): TreeType
-}
-
-Forest *-- Tree
-Tree --> TreeType
-Forest --> TreeTypeFactory
-TreeTypeFactory --> TreeType
-
-note right of TreeType
-  Intrinsic state:
-  name, color, texture
-end note
-
-note left of Tree
-  Extrinsic state:
-  x, y
-end note
-@enduml
-```
 
 #figure(
   image("diagrams/flyweight-forest-example.svg", width: 100%),
@@ -287,30 +196,6 @@ Luồng hoạt động cơ bản của Flyweight Pattern:
 8. Khi cần xử lý, Context gọi Flyweight và truyền thêm trạng thái riêng nếu cần.
 
 Sơ đồ tuần tự:
-
-```plantuml
-@startuml
-actor Client
-participant "FlyweightFactory" as Factory
-participant "Context\n(Tree)" as Context
-participant "Flyweight\n(TreeType)" as Flyweight
-
-Client -> Factory: GetTreeType("Oak", "Green", "oak.png")
-alt Flyweight đã tồn tại
-  Factory --> Client: trả về TreeType cũ
-else Flyweight chưa tồn tại
-  Factory -> Flyweight: tạo TreeType mới
-  Factory -> Factory: lưu vào cache
-  Factory --> Client: trả về TreeType mới
-end
-
-Client -> Context: new Tree(x, y, treeType)
-Client -> Context: Draw()
-Context -> Flyweight: Draw(x, y)
-Flyweight --> Context: vẽ dựa trên intrinsic + extrinsic state
-Context --> Client: hoàn tất
-@enduml
-```
 
 #figure(
   image("diagrams/flyweight-sequence.svg", width: 100%),
@@ -644,35 +529,6 @@ Có thể áp dụng Flyweight như sau:
 Khi cần hiển thị 500 shipper online, không cần tạo 500 icon/style riêng. Mỗi marker chỉ giữ vị trí và trạng thái riêng, còn style được dùng chung.
 
 Sơ đồ ý tưởng:
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class MapMarker {
-  - latitude: double
-  - longitude: double
-  - objectId: string
-  - style: MarkerStyle
-  + Render(): void
-}
-
-class MarkerStyle {
-  - iconUrl: string
-  - color: string
-  - size: int
-  + RenderAt(latitude: double, longitude: double): void
-}
-
-class MarkerStyleFactory {
-  - styles: Dictionary<string, MarkerStyle>
-  + GetStyle(type: string): MarkerStyle
-}
-
-MapMarker --> MarkerStyle
-MarkerStyleFactory --> MarkerStyle
-@enduml
-```
 
 #figure(
   image("diagrams/flyweight-map-marker-example.svg", width: 100%),

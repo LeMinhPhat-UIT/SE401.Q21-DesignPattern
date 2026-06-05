@@ -97,30 +97,6 @@ Singleton có thể được cài đặt theo nhiều biến thể:
 
 === UML tổng quát
 
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class Client {
-  +DoWork()
-}
-
-class Singleton {
-  -static instance: Singleton
-  -Singleton()
-  +static Instance: Singleton
-  +Operation()
-}
-
-Client --> Singleton : uses Instance
-
-note right of Singleton
-  Constructor private để ngăn new từ bên ngoài.
-  Instance static đảm bảo có một điểm truy cập chung.
-end note
-@enduml
-```
-
 #figure(
   image("diagrams/singleton-structure.svg", width: 100%),
   caption: [Cấu trúc UML tổng quát của Singleton Pattern],
@@ -128,31 +104,6 @@ end note
 
 
 === UML ví dụ Logger
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class OrderService {
-  +CreateOrder()
-}
-
-class PaymentService {
-  +Pay()
-}
-
-class Logger {
-  -static instance: Logger
-  -Logger()
-  +static Instance: Logger
-  +Log(message: string)
-}
-
-OrderService --> Logger : Logger.Instance.Log()
-PaymentService --> Logger : Logger.Instance.Log()
-
-@enduml
-```
 
 #figure(
   image("diagrams/singleton-logger-example.svg", width: 100%),
@@ -173,22 +124,6 @@ Luồng hoạt động cơ bản của Singleton:
 7. Những lần gọi sau đều nhận lại cùng một instance.
 
 Có thể biểu diễn bằng sequence diagram:
-
-```plantuml
-@startuml
-actor Client
-participant Singleton
-
-Client -> Singleton: Instance
-alt instance == null
-  Singleton -> Singleton: create new Singleton()
-else instance already exists
-  Singleton -> Singleton: reuse existing instance
-end
-Singleton --> Client: singleton instance
-Client -> Singleton: Operation()
-@enduml
-```
 
 #figure(
   image("diagrams/singleton-sequence.svg", width: 100%),

@@ -170,50 +170,6 @@ Việc chia nhỏ Facade giúp tránh tình trạng một Facade quá lớn và 
 
 Dưới đây là class diagram tổng quát bằng PlantUML:
 
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class Client {
-  +DoWork()
-}
-
-class Facade {
-  -subsystemA: SubsystemA
-  -subsystemB: SubsystemB
-  -subsystemC: SubsystemC
-  +Operation()
-}
-
-class SubsystemA {
-  +OperationA()
-}
-
-class SubsystemB {
-  +OperationB()
-}
-
-class SubsystemC {
-  +OperationC()
-}
-
-Client --> Facade : uses
-Facade --> SubsystemA
-Facade --> SubsystemB
-Facade --> SubsystemC
-
-note right of Facade
-Facade cung cấp API cấp cao
-và điều phối các subsystem.
-end note
-
-note bottom of Client
-Client không cần biết
-chi tiết subsystem.
-end note
-@enduml
-```
-
 #figure(
   image("diagrams/facade-structure.svg", width: 100%),
   caption: [Cấu trúc UML tổng quát của Facade Pattern],
@@ -223,62 +179,6 @@ end note
 == UML minh họa: Checkout Facade
 
 Ví dụ dưới đây mô phỏng chức năng checkout trong hệ thống bán hàng. `OrderController` chỉ gọi `CheckoutFacade`, còn Facade điều phối nhiều service bên trong.
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class OrderController {
-  -checkoutFacade: CheckoutFacade
-  +PlaceOrder(request: CheckoutRequest): CheckoutResult
-}
-
-class CheckoutFacade {
-  -inventoryService: InventoryService
-  -paymentService: PaymentService
-  -orderService: OrderService
-  -emailService: EmailService
-  +Checkout(request: CheckoutRequest): CheckoutResult
-}
-
-class InventoryService {
-  +CheckStock(items: List<OrderItem>): bool
-  +ReserveStock(items: List<OrderItem>)
-}
-
-class PaymentService {
-  +Pay(userId: Guid, amount: decimal): PaymentResult
-}
-
-class OrderService {
-  +CreateOrder(request: CheckoutRequest): Order
-}
-
-class EmailService {
-  +SendConfirmation(email: string, orderId: Guid)
-}
-
-class CheckoutRequest {
-  +UserId: Guid
-  +Email: string
-  +Items: List<OrderItem>
-}
-
-class CheckoutResult {
-  +Success: bool
-  +Message: string
-  +OrderId: Guid
-}
-
-OrderController --> CheckoutFacade
-CheckoutFacade --> InventoryService
-CheckoutFacade --> PaymentService
-CheckoutFacade --> OrderService
-CheckoutFacade --> EmailService
-CheckoutFacade ..> CheckoutRequest
-CheckoutFacade ..> CheckoutResult
-@enduml
-```
 
 #figure(
   image("diagrams/facade-checkout-example.svg", width: 100%),

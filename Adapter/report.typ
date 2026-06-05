@@ -138,36 +138,6 @@ Client vẫn chỉ thấy `IPaymentGateway`, còn chi tiết chuyển đổi san
 
 Dưới đây là class diagram tổng quát bằng PlantUML:
 
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class Client
-
-interface Target {
-  +request(data)
-}
-
-class Adapter {
-  -adaptee: Adaptee
-  +request(data)
-}
-
-class Adaptee {
-  +specificRequest(specificData)
-}
-
-Client --> Target : uses
-Adapter ..|> Target
-Adapter --> Adaptee : delegates / translates
-
-note bottom of Adapter
-  specificData = convert(data)
-  return adaptee.specificRequest(specificData)
-end note
-@enduml
-```
-
 #figure(
   image("diagrams/adapter-structure.svg", width: 100%),
   caption: [Cấu trúc UML tổng quát của Adapter Pattern],
@@ -194,23 +164,6 @@ Luồng hoạt động của Adapter Pattern có thể mô tả theo các bướ
 7. Client nhận kết quả theo đúng interface quen thuộc, không cần biết có sự tồn tại của `Adaptee` phía sau.
 
 Sequence diagram minh họa:
-
-```plantuml
-@startuml
-actor Client
-participant "Target Interface" as Target
-participant Adapter
-participant Adaptee
-
-Client -> Target : request(data)
-Target -> Adapter : request(data)
-Adapter -> Adapter : convert(data)
-Adapter -> Adaptee : specificRequest(specificData)
-Adaptee --> Adapter : specificResult
-Adapter -> Adapter : convertResult(specificResult)
-Adapter --> Client : result
-@enduml
-```
 
 #figure(
   image("diagrams/adapter-sequence.svg", width: 100%),
@@ -394,51 +347,6 @@ checkoutService.Checkout(19.99m);
 )
 
 == UML cho ví dụ thanh toán
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class CheckoutService {
-  -paymentGateway: IPaymentGateway
-  +Checkout(totalAmount: decimal): void
-}
-
-interface IPaymentGateway {
-  +Pay(amount: decimal, currency: string): PaymentResult
-}
-
-class StripePaymentAdapter {
-  -stripeService: StripeService
-  +Pay(amount: decimal, currency: string): PaymentResult
-  -ConvertToCents(amount: decimal): long
-}
-
-class StripeService {
-  +Charge(amountInCents: long, currencyCode: string): StripeResponse
-}
-
-class PaymentResult {
-  +Success: bool
-  +TransactionId: string
-  +Message: string
-}
-
-class StripeResponse {
-  +IsSuccess: bool
-  +TransactionId: string
-  +Message: string
-}
-
-CheckoutService --> IPaymentGateway
-StripePaymentAdapter ..|> IPaymentGateway
-StripePaymentAdapter --> StripeService
-IPaymentGateway ..> PaymentResult
-StripeService ..> StripeResponse
-StripePaymentAdapter ..> PaymentResult
-StripePaymentAdapter ..> StripeResponse
-@enduml
-```
 
 #figure(
   image("diagrams/adapter-payment-example.svg", width: 100%),

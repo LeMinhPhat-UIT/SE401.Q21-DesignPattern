@@ -193,49 +193,6 @@ Client không cần biết chi tiết bên trong từng handler. Nó chỉ cần
 
 Dưới đây là class diagram tổng quát bằng PlantUML:
 
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class Client
-
-interface Handler {
-  +setNext(next: Handler): Handler
-  +handle(request: Request)
-}
-
-abstract class BaseHandler {
-  -next: Handler
-  +setNext(next: Handler): Handler
-  +handle(request: Request)
-}
-
-class ConcreteHandlerA {
-  +handle(request: Request)
-}
-
-class ConcreteHandlerB {
-  +handle(request: Request)
-}
-
-class ConcreteHandlerC {
-  +handle(request: Request)
-}
-
-Client --> Handler : sends request to first handler
-BaseHandler ..|> Handler
-BaseHandler o--> Handler : next
-ConcreteHandlerA --|> BaseHandler
-ConcreteHandlerB --|> BaseHandler
-ConcreteHandlerC --|> BaseHandler
-
-note right of BaseHandler
-  Nếu handler hiện tại không dừng chain,
-  request được chuyển cho next handler.
-end note
-@enduml
-```
-
 #figure(
   image("diagrams/cor-structure.svg", width: 100%),
   caption: [Cấu trúc UML tổng quát của Chain of Responsibility],
@@ -262,36 +219,6 @@ Luồng hoạt động cơ bản của Chain of Responsibility gồm các bướ
 7. Chain kết thúc khi request được xử lý xong, bị reject, hoặc không còn handler kế tiếp.
 
 Sequence diagram minh họa:
-
-```plantuml
-@startuml
-actor Client
-participant LoggingHandler
-participant AuthHandler
-participant ValidationHandler
-participant BusinessHandler
-
-Client -> LoggingHandler : Handle(request)
-LoggingHandler -> LoggingHandler : log request
-LoggingHandler -> AuthHandler : forward request
-AuthHandler -> AuthHandler : check authentication
-
-alt authenticated
-  AuthHandler -> ValidationHandler : forward request
-  ValidationHandler -> ValidationHandler : validate data
-
-  alt valid
-    ValidationHandler -> BusinessHandler : forward request
-    BusinessHandler -> BusinessHandler : execute business logic
-    BusinessHandler --> Client : success response
-  else invalid
-    ValidationHandler --> Client : reject request
-  end
-else unauthenticated
-  AuthHandler --> Client : reject request
-end
-@enduml
-```
 
 #figure(
   image("diagrams/cor-sequence.svg", width: 100%),
@@ -511,51 +438,6 @@ if (context.IsRejected)
 )
 
 == Class diagram cho ví dụ C\#
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class RequestContext {
-  +UserName: string
-  +IsAuthenticated: bool
-  +HasPermission: bool
-  +Payload: string
-  +IsRejected: bool
-  +ErrorMessage: string
-}
-
-interface IRequestHandler {
-  +SetNext(next: IRequestHandler): IRequestHandler
-  +HandleAsync(context: RequestContext): Task
-}
-
-abstract class BaseRequestHandler {
-  -next: IRequestHandler
-  +SetNext(next: IRequestHandler): IRequestHandler
-  +HandleAsync(context: RequestContext): Task
-}
-
-class LoggingHandler
-class AuthenticationHandler
-class AuthorizationHandler
-class ValidationHandler
-class BusinessHandler
-
-IRequestHandler <|.. BaseRequestHandler
-BaseRequestHandler <|-- LoggingHandler
-BaseRequestHandler <|-- AuthenticationHandler
-BaseRequestHandler <|-- AuthorizationHandler
-BaseRequestHandler <|-- ValidationHandler
-BaseRequestHandler <|-- BusinessHandler
-BaseRequestHandler o--> IRequestHandler : next
-LoggingHandler --> RequestContext
-AuthenticationHandler --> RequestContext
-AuthorizationHandler --> RequestContext
-ValidationHandler --> RequestContext
-BusinessHandler --> RequestContext
-@enduml
-```
 
 #figure(
   image("diagrams/cor-request-pipeline.svg", width: 100%),

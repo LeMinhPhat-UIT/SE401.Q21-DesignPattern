@@ -94,39 +94,6 @@ Vai trò cụ thể:
 
 Sơ đồ UML tổng quát của Memento Pattern:
 
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class Originator {
-  - state: string
-  + SetState(state: string)
-  + Save(): Memento
-  + Restore(memento: Memento)
-}
-
-class Memento {
-  - state: string
-  - createdAt: DateTime
-  + GetName(): string
-  + GetState(): string
-}
-
-class Caretaker {
-  - history: Stack<Memento>
-  - originator: Originator
-  + Backup()
-  + Undo()
-  + ShowHistory()
-}
-
-Caretaker o-- "many" Memento : stores
-Caretaker --> Originator : asks save/restore
-Originator ..> Memento : creates/restores
-
-@enduml
-```
-
 #figure(
   image("diagrams/memento-structure.svg", width: 100%),
   caption: [Cấu trúc UML tổng quát của Memento Pattern],
@@ -143,44 +110,6 @@ Giải thích sơ đồ:
 == UML minh họa với Text Editor
 
 Ví dụ cụ thể với trình soạn thảo văn bản:
-
-```plantuml
-@startuml
-skinparam classAttributeIconSize 0
-
-class TextEditor {
-  - content: string
-  - cursorPosition: int
-  + Type(text: string)
-  + MoveCursor(position: int)
-  + CreateSnapshot(): EditorMemento
-  + Restore(snapshot: EditorMemento)
-  + ShowContent()
-}
-
-class EditorMemento {
-  - content: string
-  - cursorPosition: int
-  - savedAt: DateTime
-  + GetContent(): string
-  + GetCursorPosition(): int
-  + GetLabel(): string
-}
-
-class EditorHistory {
-  - undoStack: Stack<EditorMemento>
-  - redoStack: Stack<EditorMemento>
-  + Save(editor: TextEditor)
-  + Undo(editor: TextEditor)
-  + Redo(editor: TextEditor)
-}
-
-EditorHistory o-- "many" EditorMemento
-TextEditor ..> EditorMemento : creates/restores
-EditorHistory --> TextEditor : controls undo/redo
-
-@enduml
-```
 
 #figure(
   image("diagrams/memento-text-editor-example.svg", width: 100%),
@@ -215,31 +144,6 @@ Luồng hoạt động khi undo:
 6. Client tiếp tục làm việc với object đã được restore.
 
 Sequence diagram minh họa:
-
-```plantuml
-@startuml
-actor User
-participant Caretaker
-participant Originator
-participant Memento
-
-User -> Caretaker: backup()
-Caretaker -> Originator: save()
-Originator -> Memento: new(state)
-Memento --> Originator: memento
-Originator --> Caretaker: memento
-Caretaker -> Caretaker: push(memento)
-
-User -> Originator: changeState()
-
-User -> Caretaker: undo()
-Caretaker -> Caretaker: pop()
-Caretaker -> Originator: restore(memento)
-Originator -> Memento: getState()
-Memento --> Originator: state
-Originator -> Originator: apply old state
-@enduml
-```
 
 #figure(
   image("diagrams/memento-sequence.svg", width: 100%),
