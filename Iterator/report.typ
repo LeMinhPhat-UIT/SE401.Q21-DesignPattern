@@ -1,9 +1,5 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
+#set heading(level: 3)
 
-= Iterator Pattern
 
 == Tên và Phân loại
 
@@ -21,14 +17,6 @@ Mục đích chính của Iterator là tách logic duyệt dữ liệu ra khỏi
 - Ẩn biểu diễn nội bộ của cấu trúc dữ liệu (array, list, tree, graph...).
 - Cung cấp một giao diện duyệt thống nhất cho nhiều kiểu tập hợp khác nhau.
 - Cho phép có nhiều cách duyệt trên cùng một collection (ví dụ: xuôi, ngược, lọc theo điều kiện).
-
-== Bí danh
-
-Iterator Pattern còn được gọi với các tên:
-
-- *Cursor*.
-- *Con trỏ duyệt*.
-- Trong một số ngữ cảnh: *Enumerator* (đặc biệt trong .NET).
 
 == Motivation
 

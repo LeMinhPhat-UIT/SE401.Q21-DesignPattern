@@ -1,9 +1,5 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
+#set heading(level: 3)
 
-= Observer Pattern
 
 == Tên và Phân loại
 
@@ -21,14 +17,6 @@ Mục đích chính của Observer là xây dựng cơ chế publish-subscribe (
 - Giảm coupling giữa đối tượng phát sự kiện (Subject) và các đối tượng phản ứng (Observer).
 - Hỗ trợ cập nhật tự động khi trạng thái thay đổi.
 - Dễ mở rộng thêm loại phản ứng mới mà không sửa mã Subject.
-
-== Bí danh
-
-Observer Pattern còn được gọi với các tên:
-
-- *Dependents*.
-- *Publish-Subscribe* (Pub/Sub).
-- *Event-Listener model*.
 
 == Motivation
 

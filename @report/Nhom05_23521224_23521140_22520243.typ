@@ -1,88 +1,132 @@
-
-#import "@preview/basic-report:0.3.1": *
-
-#show: it => basic-report(
-  doc-category: "Mẫu thiết kế - SE401.Q21",
-  doc-title: "Báo cáo cuối kỳ",
-  author: "
-Nhóm 05
-23521224 Trương Hoàng Phúc
-23521140 Lê Minh Phát
-22520243 Ya Đạt",
-  language: "vi",
-  compact-mode: false,
-  it,
-)
-
-#set page(margin: 1.75in)
-#set par(leading: 0.55em, spacing: 0.55em, first-line-indent: 1.8em, justify: true)
+#set page(margin: (top: 3cm, bottom: 3.5cm, left: 3.5cm, right: 2cm))
+// leading: giữa các dòng; spacing: giữa các đoạn văn
+#set par(leading: 21pt, spacing: 1.5em, first-line-indent: 0pt, justify: true)
+#set text(font: "Times New Roman", size: 13pt, lang: "vi")
+#set list(marker: [-], indent: 1em)
 #show heading: set block(above: 1.4em, below: 1em)
 
-= Abstract Factory (Phúc)
+#show heading.where(level: 1): it => {
+  pagebreak(weak: false) // Heading 1 nằm trên trang riêng
+  let count = counter(heading).get().at(0)
+  align(center, if count > 0 and count < 6 {
+    // Thêm chữ Chương vào Heading 1 trên trang riêng
+    ("Chương " + counter(heading).display("1. ") + it.body)
+  } else { it.body })
+}
+
+// padding for table
+#set table(inset: 10pt)
+// table can be split into next page
+#show figure: set block(breakable: true)
+// figure numbering by chapter
+#set figure(numbering: (..num) => numbering("1.1", counter(heading).get().first(), num.pos().first()))
+// caption của bảng nằm trên, còn lại nằm dưới
+#show figure.where(
+  kind: table,
+): set figure.caption(position: top)
+
+// thêm chữ Chapter cho Heading 1
+#show outline.entry.where(level: 1): it => {
+  text(
+    weight: "bold",
+    link(
+      // in đậm heading 1 trong mục lục
+      it.element.location(),
+      it.indented(
+        "Chương " + it.prefix(),
+        it.inner(),
+      ),
+    ),
+  )
+}
+
+#show outline.entry.where(level: 3): it => {
+  // Đừng hiện Heading 3 trong outline
+}
+
+#include "trang_bia.typ"
+
+#align(center, outline(title: "MỤC LỤC", indent: 2em))
+#align(center, outline(title: "DANH MỤC HÌNH", target: figure.where(kind: image)))
+#align(center, outline(title: "DANH MỤC BẢNG", target: figure.where(kind: table)))
+
+#set page(numbering: "1")
+#counter(page).update(1)
+#set heading(numbering: "1.")
+
+
+= Các mẫu tạo lập
+
+== Abstract Factory (Phúc)
 #include "../AbstractFactory/report.typ"
 
-= Adapter (Phát)
-#include "../Adapter/report.typ"
-
-= Bridge (Đạt)
-#include "../Bridge/report.typ"
-
-= Builder (Đạt)
+== Builder (Đạt)
 #include "../Builder/report.typ"
 
-= Chain of Responsibility (Phát)
-#include "../ChainOfResponsibility/report.typ"
-
-= Command (Đạt)
-#include "../Command/report.typ"
-
-= Composite (Phúc)
-#include "../Composite/report.typ"
-
-= Decorator (Phúc)
-#include "../Decorator/report.typ"
-
-= Facade (Phát)
-#include "../Facade/report.typ"
-
-= Factory Method (Đạt)
+== Factory Method (Đạt)
 #include "../FactoryMethod/report.typ"
 
-= Flyweight (Phát)
-#include "../Flyweight/report.typ"
-
-= Interpreter (Phúc)
-#include "../Interpreter/report.typ"
-
-= Iterator (Đạt)
-#include "../Iterator/report.typ"
-
-= Mediator (Phúc)
-#include "../Mediator/report.typ"
-
-= Memento (Phát)
-#include "../Memento/report.typ"
-
-= Observer (Đạt)
-#include "../Observer/report.typ"
-
-= Prototype (Phát)
+== Prototype (Phát)
 #include "../Prototype/report.typ"
 
-= Proxy (Đạt)
-#include "../Proxy/report.typ"
-
-= Singleton (Phát)
+== Singleton (Phát)
 #include "../Singleton/report.typ"
 
-= State (Phúc)
+= Các mẫu cấu trúc
+
+== Adapter (Phát)
+#include "../Adapter/report.typ"
+
+== Bridge (Đạt)
+#include "../Bridge/report.typ"
+
+== Composite (Phúc)
+#include "../Composite/report.typ"
+
+== Decorator (Phúc)
+#include "../Decorator/report.typ"
+
+== Facade (Phát)
+#include "../Facade/report.typ"
+
+== Flyweight (Phát)
+#include "../Flyweight/report.typ"
+
+== Interpreter (Phúc)
+#include "../Interpreter/report.typ"
+
+== Proxy (Đạt)
+#include "../Proxy/report.typ"
+
+
+= Các mẫu hành vi
+
+== Chain of Responsibility (Phát)
+#include "../ChainOfResponsibility/report.typ"
+
+== Command (Đạt)
+#include "../Command/report.typ"
+
+== Iterator (Đạt)
+#include "../Iterator/report.typ"
+
+== Mediator (Phúc)
+#include "../Mediator/report.typ"
+
+== Memento (Phát)
+#include "../Memento/report.typ"
+
+== Observer (Đạt)
+#include "../Observer/report.typ"
+
+== State (Phúc)
 #include "../State/report.typ"
 
-= Strategy (Đạt)
+== Strategy (Đạt)
 #include "../Strategy/report.typ"
 
-= Template Method (Phát)
+== Template Method (Phát)
 #include "../TemplateMethod/report.typ"
 
-= Visitor (Phúc)
+== Visitor (Phúc)
 #include "../Visitor/report.typ"

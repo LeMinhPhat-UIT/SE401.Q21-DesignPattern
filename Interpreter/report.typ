@@ -1,13 +1,10 @@
-#set heading(level: 2)
+#set heading(level: 3)
 
 = Tên và Phân loại
 Interpreter - Mẫu hành vi (Behavioral Pattern)
 
 = Mục đích, ý định
 Xác định cách biểu diễn một ngôn ngữ cụ thể và xây dựng trình thông dịch để xử lý các câu trong ngôn ngữ đó.
-
-= Bí danh
-Không có
 
 = Motivation
 Cần xử lý một ngôn ngữ hay ký pháp đặc biệt. Interpreter cho phép xây dựng một cấu trúc biểu diễn văn pháp và thực hiện các phép tính.

@@ -1,9 +1,4 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
-
-= Bridge Pattern
+#set heading(level: 3)
 
 == Tên và phân loại
 
@@ -32,7 +27,7 @@ UrgentSmsNotification
 ...
 ```
 
-Khi có $m$ loại thông báo và $n$ kênh gửi, số class có thể tăng gần $m \times n$.
+Khi có $m$ loại thông báo và $n$ kênh gửi, số class có thể tăng gần $m * n$.
 
 Cách làm này dẫn tới:
 

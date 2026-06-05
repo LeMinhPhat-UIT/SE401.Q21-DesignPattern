@@ -1,9 +1,5 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
+#set heading(level: 3)
 
-= Singleton Pattern
 
 == Tên và phân loại
 
@@ -309,7 +305,9 @@ Về bản chất, DI container vẫn chỉ tạo một instance `AppLogger`, nh
   inset: 8pt,
   align: (left, left),
   [*Nhược điểm*], [*Giải thích*],
-  [Dễ biến thành global state], [Nếu Singleton chứa nhiều state thay đổi, hệ thống có thể khó kiểm soát và khó dự đoán.],
+  [Dễ biến thành global state],
+  [Nếu Singleton chứa nhiều state thay đổi, hệ thống có thể khó kiểm soát và khó dự đoán.],
+
   [Tăng coupling], [Client phụ thuộc trực tiếp vào `ClassName.Instance`, khó thay thế implementation.],
   [Khó test], [Unit test khó mock nếu code gọi trực tiếp Singleton thay vì abstraction.],
   [Cần cẩn thận với đa luồng], [Lazy initialization không thread-safe có thể tạo lỗi trong môi trường concurrent.],

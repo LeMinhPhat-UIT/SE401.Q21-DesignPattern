@@ -1,13 +1,10 @@
-#set heading(level: 2)
+#set heading(level: 3)
 
 = Tên và Phân loại
 Abstract Factory - Mẫu tạo (Creational Pattern)
 
 = Mục đích, ý định
 Cung cấp giao diện để tạo các họ đối tượng liên quan mà không cần chỉ định rõ các lớp cụ thể của chúng.
-
-= Bí danh
-Kit
 
 = Motivation
 Cần tạo các sản phẩm tương thích nhau từ các họ khác nhau. Thay vì khởi tạo trực tiếp từng lớp, sử dụng factory để quản lý việc tạo.

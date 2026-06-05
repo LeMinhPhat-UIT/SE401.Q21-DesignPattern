@@ -1,13 +1,10 @@
-#set heading(level: 2)
+#set heading(level: 3)
 
 = Tên và Phân loại
 Mediator - Mẫu hành vi (Behavioral Pattern)
 
 = Mục đích, ý định
 Xác định một đối tượng trung gian để đơn giản hóa giao tiếp giữa các đối tượng. Giảm sự phụ thuộc lẫn nhau bằng cách cho các đối tượng giao tiếp qua mediator thay vì trực tiếp.
-
-= Bí danh
-Intermediary, Controller
 
 = Motivation
 Khi nhiều đối tượng cần giao tiếp phức tạp với nhau, chúng trở thành phụ thuộc chặt chẽ. Mediator tập trung logic giao tiếp.

@@ -1,13 +1,10 @@
-#set heading(level: 2)
+#set heading(level: 3)
 
 = Tên và Phân loại
 Visitor - Mẫu hành vi (Behavioral Pattern)
 
 = Mục đích, ý định
 Cho phép định nghĩa các thao tác mới trên các phần tử của một cấu trúc đối tượng mà không thay đổi các lớp của những phần tử đó. Tách logic xử lý khỏi cấu trúc dữ liệu.
-
-= Bí danh
-Không có
 
 = Motivation
 Khi cần thực hiện nhiều thao tác khác nhau trên cùng một cấu trúc đối tượng phức tạp, thêm mỗi thao tác mới vào từng lớp sẽ làm cho code trở nên cồng kềnh. Visitor cho phép tách các thao tác ra khỏi cấu trúc.

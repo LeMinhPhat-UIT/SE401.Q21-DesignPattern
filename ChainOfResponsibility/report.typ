@@ -1,9 +1,4 @@
-#set text(font: "New Computer Modern", size: 11pt)
-#set page(margin: (x: 2.2cm, y: 2cm))
-#set heading(numbering: "1.")
-#set par(justify: true, leading: 0.65em)
-
-= Chain of Responsibility Pattern
+#set heading(level: 3)
 
 == Tên và phân loại
 
