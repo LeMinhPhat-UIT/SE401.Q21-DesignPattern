@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="728" viewBox="0 0 760 728">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .participant { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .actor { fill: #ecfeff; stroke: #0891b2; stroke-width: 1.4; }
+  .title { font: 600 13px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .lifeline { stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 6 5; }
+  .message { stroke: #334155; stroke-width: 1.35; fill: none; }
+  .message.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .guard { fill: #fef3c7; stroke: #f59e0b; stroke-width: 1.1; }
+  .guard-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #78350f; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<rect class="actor" x="16.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="80.0" y="43.0"><tspan x="80.0" dy="0">Client</tspan></text>
+<line class="lifeline" x1="80.0" y1="70" x2="80.0" y2="694.0"/>
+<rect class="participant" x="196.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="260.0" y="43.0"><tspan x="260.0" dy="0">CreditCardPaymentProcessor</tspan></text>
+<line class="lifeline" x1="260.0" y1="70" x2="260.0" y2="694.0"/>
+<rect class="participant" x="376.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="440.0" y="43.0"><tspan x="440.0" dy="0">PaymentProcessor</tspan></text>
+<line class="lifeline" x1="440.0" y1="70" x2="440.0" y2="694.0"/>
+<rect class="participant" x="556.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="620.0" y="43.0"><tspan x="620.0" dy="0">Order</tspan></text>
+<line class="lifeline" x1="620.0" y1="70" x2="620.0" y2="694.0"/>
+<line class="message" x1="80.0" y1="108.0" x2="260.0" y2="108.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="100.0"><tspan x="170.0" dy="0">Pay(order)</tspan></text>
+<line class="message" x1="260.0" y1="158.0" x2="440.0" y2="158.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="150.0"><tspan x="350.0" dy="0">ValidateOrder(order)</tspan></text>
+<line class="message" x1="260.0" y1="208.0" x2="440.0" y2="208.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="200.0"><tspan x="350.0" dy="0">CalculateAmount(order)</tspan></text>
+<path class="message" d="M260.0,258.0 H314.0 V282.0 H266.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="332.0" y="250.0"><tspan x="332.0" dy="0">BeforePayment(order)</tspan></text>
+<path class="message" d="M260.0,308.0 H314.0 V332.0 H266.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="332.0" y="300.0"><tspan x="332.0" dy="0">ProcessPayment(amount)</tspan></text>
+<line class="message" x1="260.0" y1="358.0" x2="440.0" y2="358.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="350.0"><tspan x="350.0" dy="0">UpdateOrderStatus(order)</tspan></text>
+<line class="message" x1="440.0" y1="408.0" x2="620.0" y2="408.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="400.0"><tspan x="530.0" dy="0">Status = &quot;Paid&quot;</tspan></text>
+<line class="message" x1="260.0" y1="458.0" x2="440.0" y2="458.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="450.0"><tspan x="350.0" dy="0">ShouldSendNotification()</tspan></text>
+<line class="message dashed" x1="440.0" y1="508.0" x2="260.0" y2="508.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="500.0"><tspan x="350.0" dy="0">true</tspan></text>
+<line class="message" x1="260.0" y1="558.0" x2="440.0" y2="558.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="550.0"><tspan x="350.0" dy="0">SendNotification(order)</tspan></text>
+<line class="message dashed" x1="260.0" y1="608.0" x2="80.0" y2="608.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="600.0"><tspan x="170.0" dy="0">payment completed</tspan></text>
+</svg>

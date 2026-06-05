@@ -1,0 +1,26 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class MapMarker {
+  - latitude: double
+  - longitude: double
+  - objectId: string
+  - style: MarkerStyle
+  + Render(): void
+}
+
+class MarkerStyle {
+  - iconUrl: string
+  - color: string
+  - size: int
+  + RenderAt(latitude: double, longitude: double): void
+}
+
+class MarkerStyleFactory {
+  - styles: Dictionary<string, MarkerStyle>
+  + GetStyle(type: string): MarkerStyle
+}
+
+MapMarker --> MarkerStyle
+MarkerStyleFactory --> MarkerStyle
+@enduml

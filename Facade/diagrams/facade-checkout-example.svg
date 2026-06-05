@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="431" viewBox="0 0 1520 431">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .header { fill: #e0f2fe; stroke: #334155; stroke-width: 1.4; }
+  .interface { fill: #dcfce7; }
+  .abstract { fill: #fef3c7; }
+  .title { font: 600 15px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .stereo { font: 12px "Segoe UI", Arial, sans-serif; fill: #475569; }
+  .member { font: 12px Consolas, "Courier New", monospace; fill: #1e293b; }
+  .edge { fill: none; stroke: #334155; stroke-width: 1.35; }
+  .edge.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .label-bg { fill: #ffffff; opacity: 0.9; }
+  .note { fill: #fff7ed; stroke: #f97316; stroke-width: 1.2; }
+  .note-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #7c2d12; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<line class="edge" x1="360.0" y1="128.0" x2="420.0" y2="128.0" marker-end="url(#arrow)"/>
+<line class="edge" x1="575.0" y1="206.0" x2="575.0" y2="276.0" marker-end="url(#arrow)"/>
+<line class="edge" x1="730.0" y1="128.0" x2="1160.0" y2="328.5" marker-end="url(#arrow)"/>
+<line class="edge" x1="730.0" y1="128.0" x2="790.0" y2="328.5" marker-end="url(#arrow)"/>
+<line class="edge" x1="420.0" y1="128.0" x2="360.0" y2="328.5" marker-end="url(#arrow)"/>
+<line class="edge dashed" x1="730.0" y1="128.0" x2="790.0" y2="128.0" marker-end="url(#arrow)"/>
+<line class="edge dashed" x1="730.0" y1="128.0" x2="1160.0" y2="128.0" marker-end="url(#arrow)"/>
+<rect class="box" x="50.0" y="75.5" width="310.0" height="105.0" rx="8"/>
+<rect class="header" x="50.0" y="75.5" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="119.5" x2="360.0" y2="119.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="90.5"><tspan x="205.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="107.5"><tspan x="205.0" dy="0">OrderController</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="137.5"><tspan x="64.0" dy="0">-checkoutFacade: CheckoutFacade</tspan><tspan x="64.0" dy="17">+PlaceOrder(request: CheckoutRequest):</tspan><tspan x="64.0" dy="17">CheckoutResult</tspan></text>
+<rect class="box" x="420.0" y="50.0" width="310.0" height="156.0" rx="8"/>
+<rect class="header" x="420.0" y="50.0" width="310.0" height="44" rx="8"/>
+<line x1="420.0" y1="94.0" x2="730.0" y2="94.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="575.0" y="65.0"><tspan x="575.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="575.0" y="82.0"><tspan x="575.0" dy="0">CheckoutFacade</tspan></text>
+<text class="member" text-anchor="start" x="434.0" y="112.0"><tspan x="434.0" dy="0">-inventoryService: InventoryService</tspan><tspan x="434.0" dy="17">-paymentService: PaymentService</tspan><tspan x="434.0" dy="17">-orderService: OrderService</tspan><tspan x="434.0" dy="17">-emailService: EmailService</tspan><tspan x="434.0" dy="17">+Checkout(request: CheckoutRequest):</tspan><tspan x="434.0" dy="17">CheckoutResult</tspan></text>
+<rect class="box" x="790.0" y="75.5" width="310.0" height="105.0" rx="8"/>
+<rect class="header" x="790.0" y="75.5" width="310.0" height="44" rx="8"/>
+<line x1="790.0" y1="119.5" x2="1100.0" y2="119.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="945.0" y="90.5"><tspan x="945.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="945.0" y="107.5"><tspan x="945.0" dy="0">CheckoutRequest</tspan></text>
+<text class="member" text-anchor="start" x="804.0" y="137.5"><tspan x="804.0" dy="0">+UserId: Guid</tspan><tspan x="804.0" dy="17">+Email: string</tspan><tspan x="804.0" dy="17">+Items: List&lt;OrderItem&gt;</tspan></text>
+<rect class="box" x="1160.0" y="75.5" width="310.0" height="105.0" rx="8"/>
+<rect class="header" x="1160.0" y="75.5" width="310.0" height="44" rx="8"/>
+<line x1="1160.0" y1="119.5" x2="1470.0" y2="119.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="1315.0" y="90.5"><tspan x="1315.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="1315.0" y="107.5"><tspan x="1315.0" dy="0">CheckoutResult</tspan></text>
+<text class="member" text-anchor="start" x="1174.0" y="137.5"><tspan x="1174.0" dy="0">+Success: bool</tspan><tspan x="1174.0" dy="17">+Message: string</tspan><tspan x="1174.0" dy="17">+OrderId: Guid</tspan></text>
+<rect class="box" x="50.0" y="284.5" width="310.0" height="88.0" rx="8"/>
+<rect class="header" x="50.0" y="284.5" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="328.5" x2="360.0" y2="328.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="299.5"><tspan x="205.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="316.5"><tspan x="205.0" dy="0">EmailService</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="346.5"><tspan x="64.0" dy="0">+SendConfirmation(email: string,</tspan><tspan x="64.0" dy="17">orderId: Guid)</tspan></text>
+<rect class="box" x="420.0" y="276.0" width="310.0" height="105.0" rx="8"/>
+<rect class="header" x="420.0" y="276.0" width="310.0" height="44" rx="8"/>
+<line x1="420.0" y1="320.0" x2="730.0" y2="320.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="575.0" y="291.0"><tspan x="575.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="575.0" y="308.0"><tspan x="575.0" dy="0">InventoryService</tspan></text>
+<text class="member" text-anchor="start" x="434.0" y="338.0"><tspan x="434.0" dy="0">+CheckStock(items: List&lt;OrderItem&gt;):</tspan><tspan x="434.0" dy="17">bool</tspan><tspan x="434.0" dy="17">+ReserveStock(items: List&lt;OrderItem&gt;)</tspan></text>
+<rect class="box" x="790.0" y="284.5" width="310.0" height="88.0" rx="8"/>
+<rect class="header" x="790.0" y="284.5" width="310.0" height="44" rx="8"/>
+<line x1="790.0" y1="328.5" x2="1100.0" y2="328.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="945.0" y="299.5"><tspan x="945.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="945.0" y="316.5"><tspan x="945.0" dy="0">OrderService</tspan></text>
+<text class="member" text-anchor="start" x="804.0" y="346.5"><tspan x="804.0" dy="0">+CreateOrder(request:</tspan><tspan x="804.0" dy="17">CheckoutRequest): Order</tspan></text>
+<rect class="box" x="1160.0" y="284.5" width="310.0" height="88.0" rx="8"/>
+<rect class="header" x="1160.0" y="284.5" width="310.0" height="44" rx="8"/>
+<line x1="1160.0" y1="328.5" x2="1470.0" y2="328.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="1315.0" y="299.5"><tspan x="1315.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="1315.0" y="316.5"><tspan x="1315.0" dy="0">PaymentService</tspan></text>
+<text class="member" text-anchor="start" x="1174.0" y="346.5"><tspan x="1174.0" dy="0">+Pay(userId: Guid, amount: decimal):</tspan><tspan x="1174.0" dy="17">PaymentResult</tspan></text>
+</svg>

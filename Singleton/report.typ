@@ -121,6 +121,12 @@ end note
 @enduml
 ```
 
+#figure(
+  image("diagrams/singleton-structure.svg", width: 100%),
+  caption: [Cấu trúc UML tổng quát của Singleton Pattern],
+)
+
+
 === UML ví dụ Logger
 
 ```plantuml
@@ -147,6 +153,12 @@ PaymentService --> Logger : Logger.Instance.Log()
 
 @enduml
 ```
+
+#figure(
+  image("diagrams/singleton-logger-example.svg", width: 100%),
+  caption: [Class diagram của ví dụ Logger Singleton],
+)
+
 
 == Luồng hoạt động
 
@@ -177,6 +189,12 @@ Singleton --> Client: singleton instance
 Client -> Singleton: Operation()
 @enduml
 ```
+
+#figure(
+  image("diagrams/singleton-sequence.svg", width: 100%),
+  caption: [Luồng truy cập instance duy nhất],
+)
+
 
 == Code minh họa C\#
 
@@ -325,6 +343,13 @@ public class OrderService
 ```
 
 Về bản chất, DI container vẫn chỉ tạo một instance `AppLogger`, nhưng client không gọi `AppLogger.Instance`. Điều này giúp giảm coupling và dễ test hơn.
+
+
+
+#figure(
+  image("diagrams/singleton-code-flow.svg", width: 100%),
+  caption: [Luồng chạy code ví dụ Logger Singleton],
+)
 
 == Đánh giá
 

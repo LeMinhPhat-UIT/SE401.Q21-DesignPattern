@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="448" viewBox="0 0 780 448">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .header { fill: #e0f2fe; stroke: #334155; stroke-width: 1.4; }
+  .interface { fill: #dcfce7; }
+  .abstract { fill: #fef3c7; }
+  .title { font: 600 15px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .stereo { font: 12px "Segoe UI", Arial, sans-serif; fill: #475569; }
+  .member { font: 12px Consolas, "Courier New", monospace; fill: #1e293b; }
+  .edge { fill: none; stroke: #334155; stroke-width: 1.35; }
+  .edge.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .label-bg { fill: #ffffff; opacity: 0.9; }
+  .note { fill: #fff7ed; stroke: #f97316; stroke-width: 1.2; }
+  .note-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #7c2d12; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<line class="edge" x1="420.0" y1="128.0" x2="360.0" y2="337.0"/>
+<line class="edge" x1="360.0" y1="337.0" x2="420.0" y2="337.0" marker-end="url(#arrow)"/>
+<line class="edge" x1="420.0" y1="128.0" x2="360.0" y2="128.0" marker-end="url(#arrow)"/>
+<line class="edge" x1="360.0" y1="128.0" x2="420.0" y2="337.0" marker-end="url(#arrow)"/>
+<rect class="box" x="50.0" y="67.0" width="310.0" height="122.0" rx="8"/>
+<rect class="header" x="50.0" y="67.0" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="111.0" x2="360.0" y2="111.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="82.0"><tspan x="205.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="99.0"><tspan x="205.0" dy="0">TreeTypeFactory</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="129.0"><tspan x="64.0" dy="0">- treeTypes: Dictionary&lt;string,</tspan><tspan x="64.0" dy="17">TreeType&gt;</tspan><tspan x="64.0" dy="17">+ GetTreeType(name: string, color:</tspan><tspan x="64.0" dy="17">string, texture: string): TreeType</tspan></text>
+<rect class="box" x="420.0" y="50.0" width="310.0" height="156.0" rx="8"/>
+<rect class="header" x="420.0" y="50.0" width="310.0" height="44" rx="8"/>
+<line x1="420.0" y1="94.0" x2="730.0" y2="94.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="575.0" y="65.0"><tspan x="575.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="575.0" y="82.0"><tspan x="575.0" dy="0">Forest</tspan></text>
+<text class="member" text-anchor="start" x="434.0" y="112.0"><tspan x="434.0" dy="0">- trees: List&lt;Tree&gt;</tspan><tspan x="434.0" dy="17">- factory: TreeTypeFactory</tspan><tspan x="434.0" dy="17">+ PlantTree(x: int, y: int, name:</tspan><tspan x="434.0" dy="17">string, color: string, texture:</tspan><tspan x="434.0" dy="17">string): void</tspan><tspan x="434.0" dy="17">+ Draw(): void</tspan></text>
+<rect class="box" x="50.0" y="276.0" width="310.0" height="122.0" rx="8"/>
+<rect class="header" x="50.0" y="276.0" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="320.0" x2="360.0" y2="320.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="291.0"><tspan x="205.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="308.0"><tspan x="205.0" dy="0">Tree</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="338.0"><tspan x="64.0" dy="0">- x: int</tspan><tspan x="64.0" dy="17">- y: int</tspan><tspan x="64.0" dy="17">- type: TreeType</tspan><tspan x="64.0" dy="17">+ Draw(): void</tspan></text>
+<rect class="box" x="420.0" y="276.0" width="310.0" height="122.0" rx="8"/>
+<rect class="header" x="420.0" y="276.0" width="310.0" height="44" rx="8"/>
+<line x1="420.0" y1="320.0" x2="730.0" y2="320.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="575.0" y="291.0"><tspan x="575.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="575.0" y="308.0"><tspan x="575.0" dy="0">TreeType</tspan></text>
+<text class="member" text-anchor="start" x="434.0" y="338.0"><tspan x="434.0" dy="0">- name: string</tspan><tspan x="434.0" dy="17">- color: string</tspan><tspan x="434.0" dy="17">- texture: string</tspan><tspan x="434.0" dy="17">+ Draw(x: int, y: int): void</tspan></text>
+</svg>

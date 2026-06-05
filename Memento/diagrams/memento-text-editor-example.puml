@@ -1,0 +1,35 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class TextEditor {
+  - content: string
+  - cursorPosition: int
+  + Type(text: string)
+  + MoveCursor(position: int)
+  + CreateSnapshot(): EditorMemento
+  + Restore(snapshot: EditorMemento)
+  + ShowContent()
+}
+
+class EditorMemento {
+  - content: string
+  - cursorPosition: int
+  - savedAt: DateTime
+  + GetContent(): string
+  + GetCursorPosition(): int
+  + GetLabel(): string
+}
+
+class EditorHistory {
+  - undoStack: Stack<EditorMemento>
+  - redoStack: Stack<EditorMemento>
+  + Save(editor: TextEditor)
+  + Undo(editor: TextEditor)
+  + Redo(editor: TextEditor)
+}
+
+EditorHistory o-- "many" EditorMemento
+TextEditor ..> EditorMemento : creates/restores
+EditorHistory --> TextEditor : controls undo/redo
+
+@enduml

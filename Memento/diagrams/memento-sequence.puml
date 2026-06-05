@@ -1,0 +1,22 @@
+@startuml
+actor User
+participant Caretaker
+participant Originator
+participant Memento
+
+User -> Caretaker: backup()
+Caretaker -> Originator: save()
+Originator -> Memento: new(state)
+Memento --> Originator: memento
+Originator --> Caretaker: memento
+Caretaker -> Caretaker: push(memento)
+
+User -> Originator: changeState()
+
+User -> Caretaker: undo()
+Caretaker -> Caretaker: pop()
+Caretaker -> Originator: restore(memento)
+Originator -> Memento: getState()
+Memento --> Originator: state
+Originator -> Originator: apply old state
+@enduml

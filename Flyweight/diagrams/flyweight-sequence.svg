@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="810" viewBox="0 0 760 810">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .participant { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .actor { fill: #ecfeff; stroke: #0891b2; stroke-width: 1.4; }
+  .title { font: 600 13px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .lifeline { stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 6 5; }
+  .message { stroke: #334155; stroke-width: 1.35; fill: none; }
+  .message.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .guard { fill: #fef3c7; stroke: #f59e0b; stroke-width: 1.1; }
+  .guard-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #78350f; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<rect class="actor" x="16.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="80.0" y="43.0"><tspan x="80.0" dy="0">Client</tspan></text>
+<line class="lifeline" x1="80.0" y1="70" x2="80.0" y2="776.0"/>
+<rect class="participant" x="196.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="260.0" y="43.0"><tspan x="260.0" dy="0">FlyweightFactory</tspan></text>
+<line class="lifeline" x1="260.0" y1="70" x2="260.0" y2="776.0"/>
+<rect class="participant" x="376.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="440.0" y="43.0"><tspan x="440.0" dy="0">Context</tspan><tspan x="440.0" dy="14">(Tree)</tspan></text>
+<line class="lifeline" x1="440.0" y1="70" x2="440.0" y2="776.0"/>
+<rect class="participant" x="556.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="620.0" y="43.0"><tspan x="620.0" dy="0">Flyweight</tspan><tspan x="620.0" dy="14">(TreeType)</tspan></text>
+<line class="lifeline" x1="620.0" y1="70" x2="620.0" y2="776.0"/>
+<line class="message" x1="80.0" y1="108.0" x2="260.0" y2="108.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="100.0"><tspan x="170.0" dy="0">GetTreeType(&quot;Oak&quot;, &quot;Green&quot;,</tspan><tspan x="170.0" dy="14">&quot;oak.png&quot;)</tspan></text>
+<rect class="guard" x="30" y="153.0" width="700" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="169.0"><tspan x="42.0" dy="0">alt Flyweight đã tồn tại</tspan></text>
+<line class="message dashed" x1="260.0" y1="207.0" x2="80.0" y2="207.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="199.0"><tspan x="170.0" dy="0">trả về TreeType cũ</tspan></text>
+<rect class="guard" x="30" y="237.0" width="700" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="253.0"><tspan x="42.0" dy="0">else Flyweight chưa tồn tại</tspan></text>
+<line class="message" x1="260.0" y1="291.0" x2="620.0" y2="291.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="440.0" y="283.0"><tspan x="440.0" dy="0">tạo TreeType mới</tspan></text>
+<path class="message" d="M260.0,341.0 H314.0 V365.0 H266.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="332.0" y="333.0"><tspan x="332.0" dy="0">lưu vào cache</tspan></text>
+<line class="message dashed" x1="260.0" y1="391.0" x2="80.0" y2="391.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="383.0"><tspan x="170.0" dy="0">trả về TreeType mới</tspan></text>
+<line x1="30" y1="432.0" x2="730" y2="432.0" stroke="#f59e0b" stroke-width="1"/>
+<line class="message" x1="80.0" y1="475.0" x2="440.0" y2="475.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="260.0" y="467.0"><tspan x="260.0" dy="0">new Tree(x, y, treeType)</tspan></text>
+<line class="message" x1="80.0" y1="525.0" x2="440.0" y2="525.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="260.0" y="517.0"><tspan x="260.0" dy="0">Draw()</tspan></text>
+<line class="message" x1="440.0" y1="575.0" x2="620.0" y2="575.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="567.0"><tspan x="530.0" dy="0">Draw(x, y)</tspan></text>
+<line class="message dashed" x1="620.0" y1="625.0" x2="440.0" y2="625.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="617.0"><tspan x="530.0" dy="0">vẽ dựa trên intrinsic + extrinsic</tspan><tspan x="530.0" dy="14">state</tspan></text>
+<line class="message dashed" x1="440.0" y1="690.0" x2="80.0" y2="690.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="260.0" y="682.0"><tspan x="260.0" dy="0">hoàn tất</tspan></text>
+</svg>

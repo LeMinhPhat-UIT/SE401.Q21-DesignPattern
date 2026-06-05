@@ -1,0 +1,44 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Forest {
+  - trees: List<Tree>
+  - factory: TreeTypeFactory
+  + PlantTree(x: int, y: int, name: string, color: string, texture: string): void
+  + Draw(): void
+}
+
+class Tree {
+  - x: int
+  - y: int
+  - type: TreeType
+  + Draw(): void
+}
+
+class TreeType {
+  - name: string
+  - color: string
+  - texture: string
+  + Draw(x: int, y: int): void
+}
+
+class TreeTypeFactory {
+  - treeTypes: Dictionary<string, TreeType>
+  + GetTreeType(name: string, color: string, texture: string): TreeType
+}
+
+Forest *-- Tree
+Tree --> TreeType
+Forest --> TreeTypeFactory
+TreeTypeFactory --> TreeType
+
+note right of TreeType
+  Intrinsic state:
+  name, color, texture
+end note
+
+note left of Tree
+  Extrinsic state:
+  x, y
+end note
+@enduml

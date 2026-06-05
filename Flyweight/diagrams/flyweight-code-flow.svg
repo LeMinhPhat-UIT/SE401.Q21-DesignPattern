@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="988" viewBox="0 0 880 988">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .participant { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .actor { fill: #ecfeff; stroke: #0891b2; stroke-width: 1.4; }
+  .title { font: 600 13px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .lifeline { stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 6 5; }
+  .message { stroke: #334155; stroke-width: 1.35; fill: none; }
+  .message.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .guard { fill: #fef3c7; stroke: #f59e0b; stroke-width: 1.1; }
+  .guard-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #78350f; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<rect class="actor" x="16.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="80.0" y="43.0"><tspan x="80.0" dy="0">Program</tspan></text>
+<line class="lifeline" x1="80.0" y1="70" x2="80.0" y2="954.0"/>
+<rect class="participant" x="196.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="260.0" y="43.0"><tspan x="260.0" dy="0">Forest</tspan></text>
+<line class="lifeline" x1="260.0" y1="70" x2="260.0" y2="954.0"/>
+<rect class="participant" x="376.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="440.0" y="43.0"><tspan x="440.0" dy="0">TreeTypeFactory</tspan></text>
+<line class="lifeline" x1="440.0" y1="70" x2="440.0" y2="954.0"/>
+<rect class="participant" x="556.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="620.0" y="43.0"><tspan x="620.0" dy="0">TreeType</tspan></text>
+<line class="lifeline" x1="620.0" y1="70" x2="620.0" y2="954.0"/>
+<rect class="participant" x="736.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="800.0" y="43.0"><tspan x="800.0" dy="0">Tree</tspan></text>
+<line class="lifeline" x1="800.0" y1="70" x2="800.0" y2="954.0"/>
+<line class="message" x1="80.0" y1="108.0" x2="260.0" y2="108.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="100.0"><tspan x="170.0" dy="0">PlantTree(10, 20, &quot;Oak&quot;, &quot;Green&quot;,</tspan><tspan x="170.0" dy="14">&quot;oak.png&quot;)</tspan></text>
+<line class="message" x1="260.0" y1="173.0" x2="440.0" y2="173.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="165.0"><tspan x="350.0" dy="0">GetTreeType(&quot;Oak&quot;, &quot;Green&quot;,</tspan><tspan x="350.0" dy="14">&quot;oak.png&quot;)</tspan></text>
+<line class="message" x1="440.0" y1="238.0" x2="620.0" y2="238.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="230.0"><tspan x="530.0" dy="0">new TreeType(...)</tspan></text>
+<line class="message dashed" x1="620.0" y1="288.0" x2="440.0" y2="288.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="280.0"><tspan x="530.0" dy="0">Oak type</tspan></text>
+<line class="message dashed" x1="440.0" y1="338.0" x2="260.0" y2="338.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="330.0"><tspan x="350.0" dy="0">cached TreeType</tspan></text>
+<line class="message" x1="260.0" y1="388.0" x2="800.0" y2="388.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="380.0"><tspan x="530.0" dy="0">new Tree(x, y, type)</tspan></text>
+<line class="message dashed" x1="800.0" y1="438.0" x2="260.0" y2="438.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="430.0"><tspan x="530.0" dy="0">tree context</tspan></text>
+<line class="message" x1="80.0" y1="488.0" x2="260.0" y2="488.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="480.0"><tspan x="170.0" dy="0">PlantTree(30, 40, &quot;Oak&quot;, &quot;Green&quot;,</tspan><tspan x="170.0" dy="14">&quot;oak.png&quot;)</tspan></text>
+<line class="message" x1="260.0" y1="553.0" x2="440.0" y2="553.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="545.0"><tspan x="350.0" dy="0">GetTreeType(&quot;Oak&quot;, &quot;Green&quot;,</tspan><tspan x="350.0" dy="14">&quot;oak.png&quot;)</tspan></text>
+<line class="message dashed" x1="440.0" y1="618.0" x2="260.0" y2="618.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="610.0"><tspan x="350.0" dy="0">reuse existing TreeType</tspan></text>
+<line class="message" x1="260.0" y1="668.0" x2="800.0" y2="668.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="660.0"><tspan x="530.0" dy="0">new Tree(x, y, type)</tspan></text>
+<line class="message" x1="80.0" y1="718.0" x2="260.0" y2="718.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="710.0"><tspan x="170.0" dy="0">Draw()</tspan></text>
+<line class="message" x1="260.0" y1="768.0" x2="800.0" y2="768.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="760.0"><tspan x="530.0" dy="0">Draw()</tspan></text>
+<line class="message" x1="800.0" y1="818.0" x2="620.0" y2="818.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="710.0" y="810.0"><tspan x="710.0" dy="0">Draw(x, y)</tspan></text>
+<line class="message dashed" x1="620.0" y1="868.0" x2="80.0" y2="868.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="860.0"><tspan x="350.0" dy="0">rendered tree</tspan></text>
+</svg>

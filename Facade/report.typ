@@ -214,6 +214,12 @@ end note
 @enduml
 ```
 
+#figure(
+  image("diagrams/facade-structure.svg", width: 100%),
+  caption: [Cấu trúc UML tổng quát của Facade Pattern],
+)
+
+
 == UML minh họa: Checkout Facade
 
 Ví dụ dưới đây mô phỏng chức năng checkout trong hệ thống bán hàng. `OrderController` chỉ gọi `CheckoutFacade`, còn Facade điều phối nhiều service bên trong.
@@ -273,6 +279,12 @@ CheckoutFacade ..> CheckoutRequest
 CheckoutFacade ..> CheckoutResult
 @enduml
 ```
+
+#figure(
+  image("diagrams/facade-checkout-example.svg", width: 100%),
+  caption: [Class diagram của ví dụ Checkout Facade],
+)
+
 
 == Luồng hoạt động
 
@@ -459,6 +471,13 @@ Console.WriteLine(result.Message);
 ```
 
 Client chỉ gọi `PlaceOrder()` hoặc `Checkout()`, không cần tự điều phối tồn kho, thanh toán, tạo đơn và gửi email.
+
+
+
+#figure(
+  image("diagrams/facade-code-flow.svg", width: 100%),
+  caption: [Luồng chạy code ví dụ CheckoutFacade],
+)
 
 == Đánh giá
 

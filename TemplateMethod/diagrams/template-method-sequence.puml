@@ -1,0 +1,15 @@
+@startuml
+actor Client
+participant "ConcretePaymentProcessor" as Concrete
+participant "PaymentProcessor" as Base
+
+Client -> Concrete: Pay(order)
+activate Concrete
+Concrete -> Base: ValidateOrder(order)
+Concrete -> Base: CalculateAmount(order)
+Concrete -> Concrete: ProcessPayment(amount)
+Concrete -> Base: UpdateOrderStatus(order)
+Concrete -> Base: SendNotification(order)
+Concrete --> Client: done
+deactivate Concrete
+@enduml

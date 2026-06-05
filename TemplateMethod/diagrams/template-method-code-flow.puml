@@ -1,0 +1,18 @@
+@startuml
+actor Client
+participant "CreditCardPaymentProcessor" as Card
+participant "PaymentProcessor" as Base
+participant Order
+
+Client -> Card: Pay(order)
+Card -> Base: ValidateOrder(order)
+Card -> Base: CalculateAmount(order)
+Card -> Card: BeforePayment(order)
+Card -> Card: ProcessPayment(amount)
+Card -> Base: UpdateOrderStatus(order)
+Base -> Order: Status = "Paid"
+Card -> Base: ShouldSendNotification()
+Base --> Card: true
+Card -> Base: SendNotification(order)
+Card --> Client: payment completed
+@enduml

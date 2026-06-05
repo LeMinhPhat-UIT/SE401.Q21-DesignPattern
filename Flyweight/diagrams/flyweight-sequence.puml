@@ -1,0 +1,21 @@
+@startuml
+actor Client
+participant "FlyweightFactory" as Factory
+participant "Context\n(Tree)" as Context
+participant "Flyweight\n(TreeType)" as Flyweight
+
+Client -> Factory: GetTreeType("Oak", "Green", "oak.png")
+alt Flyweight đã tồn tại
+  Factory --> Client: trả về TreeType cũ
+else Flyweight chưa tồn tại
+  Factory -> Flyweight: tạo TreeType mới
+  Factory -> Factory: lưu vào cache
+  Factory --> Client: trả về TreeType mới
+end
+
+Client -> Context: new Tree(x, y, treeType)
+Client -> Context: Draw()
+Context -> Flyweight: Draw(x, y)
+Flyweight --> Context: vẽ dựa trên intrinsic + extrinsic state
+Context --> Client: hoàn tất
+@enduml

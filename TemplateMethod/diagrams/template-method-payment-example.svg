@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="482" viewBox="0 0 1150 482">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .header { fill: #e0f2fe; stroke: #334155; stroke-width: 1.4; }
+  .interface { fill: #dcfce7; }
+  .abstract { fill: #fef3c7; }
+  .title { font: 600 15px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .stereo { font: 12px "Segoe UI", Arial, sans-serif; fill: #475569; }
+  .member { font: 12px Consolas, "Courier New", monospace; fill: #1e293b; }
+  .edge { fill: none; stroke: #334155; stroke-width: 1.35; }
+  .edge.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .label-bg { fill: #ffffff; opacity: 0.9; }
+  .note { fill: #fff7ed; stroke: #f97316; stroke-width: 1.2; }
+  .note-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #7c2d12; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<line class="edge" x1="790.0" y1="153.5" x2="360.0" y2="153.5" marker-end="url(#arrow)"/>
+<line class="edge" x1="205.0" y1="344.0" x2="205.0" y2="257.0" marker-end="url(#arrow)"/>
+<line class="edge" x1="420.0" y1="153.5" x2="360.0" y2="153.5" marker-end="url(#arrow)"/>
+<line class="edge" x1="360.0" y1="153.5" x2="420.0" y2="379.5" marker-end="url(#arrow)"/>
+<rect class="box" x="50.0" y="50.0" width="310.0" height="207.0" rx="8"/>
+<rect class="header abstract" x="50.0" y="50.0" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="94.0" x2="360.0" y2="94.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="65.0"><tspan x="205.0" dy="0">&lt;&lt;abstract&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="82.0"><tspan x="205.0" dy="0">PaymentProcessor</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="112.0"><tspan x="64.0" dy="0">+Pay(order: Order)</tspan><tspan x="64.0" dy="17">#ValidateOrder(order: Order)</tspan><tspan x="64.0" dy="17">#CalculateAmount(order: Order):</tspan><tspan x="64.0" dy="17">decimal</tspan><tspan x="64.0" dy="17">#BeforePayment(order: Order)</tspan><tspan x="64.0" dy="17">#ProcessPayment(amount: decimal)</tspan><tspan x="64.0" dy="17">#UpdateOrderStatus(order: Order)</tspan><tspan x="64.0" dy="17">#ShouldSendNotification(): bool</tspan><tspan x="64.0" dy="17">#SendNotification(order: Order)</tspan></text>
+<rect class="box" x="420.0" y="109.5" width="310.0" height="88.0" rx="8"/>
+<rect class="header" x="420.0" y="109.5" width="310.0" height="44" rx="8"/>
+<line x1="420.0" y1="153.5" x2="730.0" y2="153.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="575.0" y="124.5"><tspan x="575.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="575.0" y="141.5"><tspan x="575.0" dy="0">CashPaymentProcessor</tspan></text>
+<text class="member" text-anchor="start" x="434.0" y="171.5"><tspan x="434.0" dy="0">#ProcessPayment(amount: decimal)</tspan><tspan x="434.0" dy="17">#ShouldSendNotification(): bool</tspan></text>
+<rect class="box" x="790.0" y="109.5" width="310.0" height="88.0" rx="8"/>
+<rect class="header" x="790.0" y="109.5" width="310.0" height="44" rx="8"/>
+<line x1="790.0" y1="153.5" x2="1100.0" y2="153.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="945.0" y="124.5"><tspan x="945.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="945.0" y="141.5"><tspan x="945.0" dy="0">CreditCardPaymentProcessor</tspan></text>
+<text class="member" text-anchor="start" x="804.0" y="171.5"><tspan x="804.0" dy="0">#BeforePayment(order: Order)</tspan><tspan x="804.0" dy="17">#ProcessPayment(amount: decimal)</tspan></text>
+<rect class="box" x="50.0" y="344.0" width="310.0" height="71.0" rx="8"/>
+<rect class="header" x="50.0" y="344.0" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="388.0" x2="360.0" y2="388.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="359.0"><tspan x="205.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="376.0"><tspan x="205.0" dy="0">MomoPaymentProcessor</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="406.0"><tspan x="64.0" dy="0">#ProcessPayment(amount: decimal)</tspan></text>
+<rect class="box" x="420.0" y="327.0" width="310.0" height="105.0" rx="8"/>
+<rect class="header" x="420.0" y="327.0" width="310.0" height="44" rx="8"/>
+<line x1="420.0" y1="371.0" x2="730.0" y2="371.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="575.0" y="342.0"><tspan x="575.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="575.0" y="359.0"><tspan x="575.0" dy="0">Order</tspan></text>
+<text class="member" text-anchor="start" x="434.0" y="389.0"><tspan x="434.0" dy="0">+Id: Guid</tspan><tspan x="434.0" dy="17">+Total: decimal</tspan><tspan x="434.0" dy="17">+Status: string</tspan></text>
+</svg>

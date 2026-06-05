@@ -1,0 +1,37 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface IEnemyPrototype {
+  +Clone(): IEnemyPrototype
+}
+
+class Enemy {
+  +Name: string
+  +Health: int
+  +Damage: int
+  +Level: int
+  +Position: Position
+  +Skills: List<string>
+  +Clone(): IEnemyPrototype
+}
+
+class Position {
+  +X: int
+  +Y: int
+}
+
+class EnemyRegistry {
+  -prototypes: Dictionary<string, IEnemyPrototype>
+  +Register(key: string, prototype: IEnemyPrototype): void
+  +Create(key: string): Enemy
+}
+
+class Program {
+  +Main(): void
+}
+
+IEnemyPrototype <|.. Enemy
+Enemy *-- Position
+EnemyRegistry o--> IEnemyPrototype
+Program --> EnemyRegistry
+@enduml

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="414" viewBox="0 0 780 414">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .header { fill: #e0f2fe; stroke: #334155; stroke-width: 1.4; }
+  .interface { fill: #dcfce7; }
+  .abstract { fill: #fef3c7; }
+  .title { font: 600 15px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .stereo { font: 12px "Segoe UI", Arial, sans-serif; fill: #475569; }
+  .member { font: 12px Consolas, "Courier New", monospace; fill: #1e293b; }
+  .edge { fill: none; stroke: #334155; stroke-width: 1.35; }
+  .edge.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .label-bg { fill: #ffffff; opacity: 0.9; }
+  .note { fill: #fff7ed; stroke: #f97316; stroke-width: 1.2; }
+  .note-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #7c2d12; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<line class="edge" x1="420.0" y1="119.5" x2="360.0" y2="119.5" marker-end="url(#arrow)"/>
+<line class="edge" x1="205.0" y1="259.0" x2="205.0" y2="189.0" marker-end="url(#arrow)"/>
+<rect class="box" x="50.0" y="50.0" width="310.0" height="139.0" rx="8"/>
+<rect class="header abstract" x="50.0" y="50.0" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="94.0" x2="360.0" y2="94.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="65.0"><tspan x="205.0" dy="0">&lt;&lt;abstract&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="82.0"><tspan x="205.0" dy="0">AbstractClass</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="112.0"><tspan x="64.0" dy="0">+TemplateMethod()</tspan><tspan x="64.0" dy="17">#StepOne()</tspan><tspan x="64.0" dy="17">#StepTwo()</tspan><tspan x="64.0" dy="17">#StepThree()</tspan><tspan x="64.0" dy="17">#Hook()</tspan></text>
+<rect class="box" x="420.0" y="75.5" width="310.0" height="88.0" rx="8"/>
+<rect class="header" x="420.0" y="75.5" width="310.0" height="44" rx="8"/>
+<line x1="420.0" y1="119.5" x2="730.0" y2="119.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="575.0" y="90.5"><tspan x="575.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="575.0" y="107.5"><tspan x="575.0" dy="0">ConcreteClassA</tspan></text>
+<text class="member" text-anchor="start" x="434.0" y="137.5"><tspan x="434.0" dy="0">#StepTwo()</tspan><tspan x="434.0" dy="17">#StepThree()</tspan></text>
+<rect class="box" x="50.0" y="259.0" width="310.0" height="105.0" rx="8"/>
+<rect class="header" x="50.0" y="259.0" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="303.0" x2="360.0" y2="303.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="274.0"><tspan x="205.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="291.0"><tspan x="205.0" dy="0">ConcreteClassB</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="321.0"><tspan x="64.0" dy="0">#StepTwo()</tspan><tspan x="64.0" dy="17">#StepThree()</tspan><tspan x="64.0" dy="17">#Hook()</tspan></text>
+</svg>

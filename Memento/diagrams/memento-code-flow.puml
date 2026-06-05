@@ -1,0 +1,24 @@
+@startuml
+actor User
+participant Program
+participant TextEditor
+participant EditorHistory
+participant EditorMemento
+
+User -> Program: edit text
+Program -> EditorHistory: Save(editor)
+EditorHistory -> TextEditor: CreateSnapshot()
+TextEditor -> EditorMemento: new(content, cursorPosition)
+EditorMemento --> EditorHistory: snapshot
+EditorHistory -> EditorHistory: push undoStack
+Program -> TextEditor: Type("Hello")
+Program -> TextEditor: MoveCursor(position)
+
+User -> Program: Undo()
+Program -> EditorHistory: Undo(editor)
+EditorHistory -> EditorHistory: pop snapshot
+EditorHistory -> TextEditor: Restore(snapshot)
+TextEditor -> EditorMemento: GetContent()
+EditorMemento --> TextEditor: old content
+TextEditor --> Program: state restored
+@enduml

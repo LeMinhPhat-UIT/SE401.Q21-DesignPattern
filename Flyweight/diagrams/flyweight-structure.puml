@@ -1,0 +1,41 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Client
+
+class Context {
+  - uniqueState: string
+  - flyweight: Flyweight
+  + Operation(): void
+}
+
+interface Flyweight {
+  + Operation(extrinsicState: string): void
+}
+
+class ConcreteFlyweight {
+  - intrinsicState: string
+  + Operation(extrinsicState: string): void
+}
+
+class FlyweightFactory {
+  - cache: Dictionary<string, Flyweight>
+  + GetFlyweight(key: string): Flyweight
+}
+
+Client --> Context : creates/uses
+Context o--> Flyweight : uses
+ConcreteFlyweight ..|> Flyweight
+FlyweightFactory --> Flyweight : returns
+Client --> FlyweightFactory : requests
+
+note right of Flyweight
+  Chứa intrinsic state:
+  dữ liệu dùng chung
+end note
+
+note bottom of Context
+  Chứa extrinsic state:
+  dữ liệu riêng từng object
+end note
+@enduml

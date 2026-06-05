@@ -1,0 +1,22 @@
+@startuml
+actor Client
+participant OrderController
+participant CheckoutFacade
+participant InventoryService
+participant PaymentService
+participant OrderService
+participant EmailService
+
+Client -> OrderController: PlaceOrder(request)
+OrderController -> CheckoutFacade: Checkout(request)
+CheckoutFacade -> InventoryService: CheckStock(items)
+InventoryService --> CheckoutFacade: true
+CheckoutFacade -> InventoryService: ReserveStock(items)
+CheckoutFacade -> PaymentService: Pay(userId, totalAmount)
+PaymentService --> CheckoutFacade: PaymentResult(success)
+CheckoutFacade -> OrderService: CreateOrder(request)
+OrderService --> CheckoutFacade: Order
+CheckoutFacade -> EmailService: SendConfirmation(email, orderId)
+CheckoutFacade --> OrderController: CheckoutResult
+OrderController --> Client: result
+@enduml

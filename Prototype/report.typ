@@ -202,6 +202,12 @@ end note
 @enduml
 ```
 
+#figure(
+  image("diagrams/prototype-structure.svg", width: 100%),
+  caption: [Cấu trúc UML tổng quát của Prototype Pattern],
+)
+
+
 Sơ đồ có Prototype Registry:
 
 ```plantuml
@@ -234,6 +240,12 @@ Client --> PrototypeRegistry : requests clone
 @enduml
 ```
 
+#figure(
+  image("diagrams/prototype-registry.svg", width: 100%),
+  caption: [Cấu trúc Prototype Registry],
+)
+
+
 == Luồng hoạt động
 
 Luồng hoạt động cơ bản của Prototype Pattern:
@@ -263,6 +275,12 @@ Registry --> Client: cloned object
 Client -> Clone: customize position/level
 @enduml
 ```
+
+#figure(
+  image("diagrams/prototype-sequence.svg", width: 100%),
+  caption: [Luồng clone object từ prototype],
+)
+
 
 Nếu không dùng registry, client có thể giữ trực tiếp prototype và gọi `Clone()` trên prototype đó.
 
@@ -402,6 +420,13 @@ Trong ví dụ trên:
 - `Program` đóng vai trò Client.
 - `Clone()` tạo bản sao độc lập cho `Position` và `Skills` để tránh bug do dùng chung reference.
 
+
+
+#figure(
+  image("diagrams/prototype-code-flow.svg", width: 100%),
+  caption: [Luồng chạy code ví dụ clone Enemy prototype],
+)
+
 === Class diagram cho ví dụ
 
 ```plantuml
@@ -443,6 +468,12 @@ EnemyRegistry o--> IEnemyPrototype
 Program --> EnemyRegistry
 @enduml
 ```
+
+#figure(
+  image("diagrams/prototype-enemy-example.svg", width: 100%),
+  caption: [Class diagram của ví dụ Enemy trong game],
+)
+
 
 == Ví dụ minh họa: Report Template
 

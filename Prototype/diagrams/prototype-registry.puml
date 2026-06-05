@@ -1,0 +1,27 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface Prototype {
+  +Clone(): Prototype
+}
+
+class ConcretePrototype {
+  -state: string
+  +Clone(): Prototype
+}
+
+class PrototypeRegistry {
+  -prototypes: Dictionary<string, Prototype>
+  +Register(key: string, prototype: Prototype): void
+  +Create(key: string): Prototype
+}
+
+class Client {
+  -registry: PrototypeRegistry
+  +Operation(): void
+}
+
+Prototype <|.. ConcretePrototype
+PrototypeRegistry o--> Prototype : stores
+Client --> PrototypeRegistry : requests clone
+@enduml

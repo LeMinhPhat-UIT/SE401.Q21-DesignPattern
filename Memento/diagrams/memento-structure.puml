@@ -1,0 +1,30 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Originator {
+  - state: string
+  + SetState(state: string)
+  + Save(): Memento
+  + Restore(memento: Memento)
+}
+
+class Memento {
+  - state: string
+  - createdAt: DateTime
+  + GetName(): string
+  + GetState(): string
+}
+
+class Caretaker {
+  - history: Stack<Memento>
+  - originator: Originator
+  + Backup()
+  + Undo()
+  + ShowHistory()
+}
+
+Caretaker o-- "many" Memento : stores
+Caretaker --> Originator : asks save/restore
+Originator ..> Memento : creates/restores
+
+@enduml

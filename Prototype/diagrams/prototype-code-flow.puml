@@ -1,0 +1,17 @@
+@startuml
+actor Program
+participant EnemyRegistry
+participant Enemy
+participant Weapon
+
+Program -> EnemyRegistry: Register("orc", prototype)
+Program -> EnemyRegistry: Create("orc")
+EnemyRegistry -> Enemy: Clone()
+Enemy -> Enemy: copy primitive fields
+Enemy -> Weapon: Clone()
+Weapon --> Enemy: copied weapon
+Enemy --> EnemyRegistry: cloned enemy
+EnemyRegistry --> Program: new enemy
+Program -> Enemy: customize position and health
+Enemy --> Program: independent object
+@enduml

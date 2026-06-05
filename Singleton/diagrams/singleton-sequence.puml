@@ -1,0 +1,13 @@
+@startuml
+actor Client
+participant Singleton
+
+Client -> Singleton: Instance
+alt instance == null
+  Singleton -> Singleton: create new Singleton()
+else instance already exists
+  Singleton -> Singleton: reuse existing instance
+end
+Singleton --> Client: singleton instance
+Client -> Singleton: Operation()
+@enduml

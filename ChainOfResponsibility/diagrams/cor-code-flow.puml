@@ -1,0 +1,32 @@
+@startuml
+actor Client
+participant LoggingHandler as Logging
+participant AuthenticationHandler as Auth
+participant AuthorizationHandler as Authorization
+participant ValidationHandler as Validation
+participant BusinessHandler as Business
+
+Client -> Logging: HandleAsync(context)
+Logging -> Logging: log request
+Logging -> Auth: forward if not rejected
+Auth -> Auth: check IsAuthenticated
+alt authenticated
+  Auth -> Authorization: forward request
+  Authorization -> Authorization: check HasPermission
+  alt authorized
+    Authorization -> Validation: forward request
+    Validation -> Validation: check Payload
+    alt valid
+      Validation -> Business: forward request
+      Business -> Business: execute business logic
+      Business --> Client: success
+    else invalid
+      Validation --> Client: IsRejected = true
+    end
+  else forbidden
+    Authorization --> Client: IsRejected = true
+  end
+else unauthenticated
+  Auth --> Client: IsRejected = true
+end
+@enduml

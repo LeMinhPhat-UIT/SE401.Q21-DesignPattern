@@ -1,0 +1,27 @@
+@startuml
+actor Client
+participant LoggingHandler
+participant AuthHandler
+participant ValidationHandler
+participant BusinessHandler
+
+Client -> LoggingHandler : Handle(request)
+LoggingHandler -> LoggingHandler : log request
+LoggingHandler -> AuthHandler : forward request
+AuthHandler -> AuthHandler : check authentication
+
+alt authenticated
+  AuthHandler -> ValidationHandler : forward request
+  ValidationHandler -> ValidationHandler : validate data
+
+  alt valid
+    ValidationHandler -> BusinessHandler : forward request
+    BusinessHandler -> BusinessHandler : execute business logic
+    BusinessHandler --> Client : success response
+  else invalid
+    ValidationHandler --> Client : reject request
+  end
+else unauthenticated
+  AuthHandler --> Client : reject request
+end
+@enduml

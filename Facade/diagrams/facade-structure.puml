@@ -1,0 +1,41 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Client {
+  +DoWork()
+}
+
+class Facade {
+  -subsystemA: SubsystemA
+  -subsystemB: SubsystemB
+  -subsystemC: SubsystemC
+  +Operation()
+}
+
+class SubsystemA {
+  +OperationA()
+}
+
+class SubsystemB {
+  +OperationB()
+}
+
+class SubsystemC {
+  +OperationC()
+}
+
+Client --> Facade : uses
+Facade --> SubsystemA
+Facade --> SubsystemB
+Facade --> SubsystemC
+
+note right of Facade
+Facade cung cấp API cấp cao
+và điều phối các subsystem.
+end note
+
+note bottom of Client
+Client không cần biết
+chi tiết subsystem.
+end note
+@enduml

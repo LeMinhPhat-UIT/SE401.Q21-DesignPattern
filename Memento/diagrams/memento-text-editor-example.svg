@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="499" viewBox="0 0 780 499">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .header { fill: #e0f2fe; stroke: #334155; stroke-width: 1.4; }
+  .interface { fill: #dcfce7; }
+  .abstract { fill: #fef3c7; }
+  .title { font: 600 15px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .stereo { font: 12px "Segoe UI", Arial, sans-serif; fill: #475569; }
+  .member { font: 12px Consolas, "Courier New", monospace; fill: #1e293b; }
+  .edge { fill: none; stroke: #334155; stroke-width: 1.35; }
+  .edge.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .label-bg { fill: #ffffff; opacity: 0.9; }
+  .note { fill: #fff7ed; stroke: #f97316; stroke-width: 1.2; }
+  .note-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #7c2d12; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<line class="edge" x1="360.0" y1="128.0" x2="420.0" y2="128.0"/>
+<line class="edge dashed" x1="360.0" y1="362.5" x2="420.0" y2="128.0" marker-end="url(#arrow)"/>
+<rect class="label-bg" x="308.0" y="223.2" width="164" height="24"/>
+<text class="label" text-anchor="middle" x="390.0" y="239.2"><tspan x="390.0" dy="0">creates/restores</tspan></text>
+<line class="edge" x1="205.0" y1="197.5" x2="205.0" y2="276.0" marker-end="url(#arrow)"/>
+<rect class="label-bg" x="123.0" y="214.8" width="164" height="24"/>
+<text class="label" text-anchor="middle" x="205.0" y="230.8"><tspan x="205.0" dy="0">controls undo/redo</tspan></text>
+<rect class="box" x="50.0" y="58.5" width="310.0" height="139.0" rx="8"/>
+<rect class="header" x="50.0" y="58.5" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="102.5" x2="360.0" y2="102.5" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="73.5"><tspan x="205.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="90.5"><tspan x="205.0" dy="0">EditorHistory</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="120.5"><tspan x="64.0" dy="0">- undoStack: Stack&lt;EditorMemento&gt;</tspan><tspan x="64.0" dy="17">- redoStack: Stack&lt;EditorMemento&gt;</tspan><tspan x="64.0" dy="17">+ Save(editor: TextEditor)</tspan><tspan x="64.0" dy="17">+ Undo(editor: TextEditor)</tspan><tspan x="64.0" dy="17">+ Redo(editor: TextEditor)</tspan></text>
+<rect class="box" x="420.0" y="50.0" width="310.0" height="156.0" rx="8"/>
+<rect class="header" x="420.0" y="50.0" width="310.0" height="44" rx="8"/>
+<line x1="420.0" y1="94.0" x2="730.0" y2="94.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="575.0" y="65.0"><tspan x="575.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="575.0" y="82.0"><tspan x="575.0" dy="0">EditorMemento</tspan></text>
+<text class="member" text-anchor="start" x="434.0" y="112.0"><tspan x="434.0" dy="0">- content: string</tspan><tspan x="434.0" dy="17">- cursorPosition: int</tspan><tspan x="434.0" dy="17">- savedAt: DateTime</tspan><tspan x="434.0" dy="17">+ GetContent(): string</tspan><tspan x="434.0" dy="17">+ GetCursorPosition(): int</tspan><tspan x="434.0" dy="17">+ GetLabel(): string</tspan></text>
+<rect class="box" x="50.0" y="276.0" width="310.0" height="173.0" rx="8"/>
+<rect class="header" x="50.0" y="276.0" width="310.0" height="44" rx="8"/>
+<line x1="50.0" y1="320.0" x2="360.0" y2="320.0" stroke="#334155" stroke-width="1.2"/>
+<text class="stereo" text-anchor="middle" x="205.0" y="291.0"><tspan x="205.0" dy="0">&lt;&lt;class&gt;&gt;</tspan></text>
+<text class="title" text-anchor="middle" x="205.0" y="308.0"><tspan x="205.0" dy="0">TextEditor</tspan></text>
+<text class="member" text-anchor="start" x="64.0" y="338.0"><tspan x="64.0" dy="0">- content: string</tspan><tspan x="64.0" dy="17">- cursorPosition: int</tspan><tspan x="64.0" dy="17">+ Type(text: string)</tspan><tspan x="64.0" dy="17">+ MoveCursor(position: int)</tspan><tspan x="64.0" dy="17">+ CreateSnapshot(): EditorMemento</tspan><tspan x="64.0" dy="17">+ Restore(snapshot: EditorMemento)</tspan><tspan x="64.0" dy="17">+ ShowContent()</tspan></text>
+</svg>
