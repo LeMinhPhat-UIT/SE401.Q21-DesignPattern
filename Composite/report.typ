@@ -15,6 +15,11 @@ Trong các ứng dụng có cấu trúc cây (file system, UI components), cần
 - Cần hỗ trợ các phép toán trên cây đối tượng
 
 = Cấu trúc
+#figure(
+  image("image.png", width: 50%),
+  caption: "Cấu trúc của mẫu Composite",
+)
+
 Component là giao diện chung. Leaf là phần tử lá (không có con). Composite là phần tử chứa các component khác.
 
 = Các thành viên

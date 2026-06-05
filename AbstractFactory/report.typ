@@ -15,6 +15,11 @@ Cần tạo các sản phẩm tương thích nhau từ các họ khác nhau. Tha
 - Cần linh hoạt chuyển đổi giữa các họ sản phẩm khác nhau
 
 = Cấu trúc
+#figure(
+  image("image.png", width: 80%),
+  caption: "Cấu trúc của mẫu Abstract Factory"
+)
+
 AbstractFactory khai báo giao diện tạo sản phẩm. ConcreteFactory triển khai giao diện để tạo các sản phẩm cụ thể.
 
 = Các thành viên

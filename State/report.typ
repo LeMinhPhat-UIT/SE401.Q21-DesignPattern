@@ -15,6 +15,11 @@ Khi một đối tượng có hành vi phụ thuộc vào trạng thái và cầ
 - Mã có nhiều if-else hoặc switch-case kiểm tra trạng thái
 
 = Cấu trúc
+#figure(
+  image("image.png", width: 80%),
+  caption: "Cấu trúc của mẫu State",
+)
+
 State định nghĩa giao diện cho các hành vi trạng thái. ConcreteState triển khai hành vi cụ thể cho từng trạng thái. Context chứa một State hiện tại.
 
 = Các thành viên

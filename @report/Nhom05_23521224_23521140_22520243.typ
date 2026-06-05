@@ -1,4 +1,4 @@
-#set page(margin: (top: 3cm, bottom: 3.5cm, left: 3.5cm, right: 2cm))
+#set page(margin: (top: 3cm, bottom: 3.5cm, left: 2cm, right: 2cm))
 // leading: giữa các dòng; spacing: giữa các đoạn văn
 #set par(leading: 21pt, spacing: 1.5em, first-line-indent: 0pt, justify: true)
 #set text(font: "Times New Roman", size: 13pt, lang: "vi")
@@ -14,6 +14,7 @@
   } else { it.body })
 }
 
+
 // padding for table
 #set table(inset: 10pt)
 // table can be split into next page
@@ -27,17 +28,21 @@
 
 // thêm chữ Chapter cho Heading 1
 #show outline.entry.where(level: 1): it => {
-  text(
-    weight: "bold",
-    link(
-      // in đậm heading 1 trong mục lục
-      it.element.location(),
-      it.indented(
-        "Chương " + it.prefix(),
-        it.inner(),
+  if it.element.func() == heading {
+    text(
+      weight: "bold",
+      link(
+        // in đậm heading 1 trong mục lục
+        it.element.location(),
+        it.indented(
+          "Chương " + it.prefix(),
+          it.inner(),
+        ),
       ),
-    ),
-  )
+    )
+  } else {
+    it
+  }
 }
 
 #show outline.entry.where(level: 3): it => {
@@ -48,7 +53,7 @@
 
 #align(center, outline(title: "MỤC LỤC", indent: 2em))
 #align(center, outline(title: "DANH MỤC HÌNH", target: figure.where(kind: image)))
-#align(center, outline(title: "DANH MỤC BẢNG", target: figure.where(kind: table)))
+// #align(center, outline(title: "DANH MỤC BẢNG", target: figure.where(kind: table)))
 
 #set page(numbering: "1")
 #counter(page).update(1)

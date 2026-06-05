@@ -15,6 +15,11 @@ Khi cần thêm nhiều biến thể tính năng (ví dụ: thông báo + log + 
 - Muốn áp dụng/loại bỏ tính năng theo cấu hình.
 
 = Cấu trúc
+#figure(
+  image("image.png", width: 80%),
+  caption: "Cấu trúc của mẫu Decorator",
+)
+
 Component định nghĩa giao diện chung. ConcreteComponent là đối tượng gốc. Decorator giữ tham chiếu đến Component và chuyển tiếp lời gọi. ConcreteDecorator mở rộng bằng hành vi trước/sau khi ủy quyền.
 
 = Các thành viên

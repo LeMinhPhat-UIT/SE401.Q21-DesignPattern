@@ -15,6 +15,10 @@ Khi nhiều đối tượng cần giao tiếp phức tạp với nhau, chúng tr
 - Hành vi phân tán giữa các lớp cần tập trung
 
 = Cấu trúc
+#figure(
+  image("image.png", width: 80%),
+  caption: "Cấu trúc của mẫu Mediator",
+)
 Mediator định nghĩa giao diện để giao tiếp. ConcreteMediator triển khai và phối hợp các Colleague.
 
 = Các thành viên

@@ -16,6 +16,11 @@ Cần xử lý một ngôn ngữ hay ký pháp đặc biệt. Interpreter cho ph
 - Cần linh hoạt thêm câu lệnh mới
 
 = Cấu trúc
+#figure(
+  image("image.png", width: 80%),
+  caption: "Cấu trúc của mẫu Interpreter",
+)
+
 AbstractExpression khai báo phương thức interpret(). ConcreteExpression triển khai phương thức này. Các expression tổ hợp thành cây cú pháp.
 
 = Các thành viên
