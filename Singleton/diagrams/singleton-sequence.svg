@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="530" viewBox="0 0 760 530">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .participant { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .actor { fill: #ecfeff; stroke: #0891b2; stroke-width: 1.4; }
+  .title { font: 600 13px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .lifeline { stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 6 5; }
+  .message { stroke: #334155; stroke-width: 1.35; fill: none; }
+  .message.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .guard { fill: #fef3c7; stroke: #f59e0b; stroke-width: 1.1; }
+  .guard-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #78350f; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<rect class="actor" x="16.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="80.0" y="43.0"><tspan x="80.0" dy="0">Client</tspan></text>
+<line class="lifeline" x1="80.0" y1="70" x2="80.0" y2="496.0"/>
+<rect class="participant" x="196.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="260.0" y="43.0"><tspan x="260.0" dy="0">Singleton</tspan></text>
+<line class="lifeline" x1="260.0" y1="70" x2="260.0" y2="496.0"/>
+<line class="message" x1="80.0" y1="108.0" x2="260.0" y2="108.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="100.0"><tspan x="170.0" dy="0">Instance</tspan></text>
+<rect class="guard" x="30" y="138.0" width="700" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="154.0"><tspan x="42.0" dy="0">alt instance == null</tspan></text>
+<path class="message" d="M260.0,192.0 H314.0 V216.0 H266.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="332.0" y="184.0"><tspan x="332.0" dy="0">create new Singleton()</tspan></text>
+<rect class="guard" x="30" y="222.0" width="700" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="238.0"><tspan x="42.0" dy="0">else instance already exists</tspan></text>
+<path class="message" d="M260.0,276.0 H314.0 V300.0 H266.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="332.0" y="268.0"><tspan x="332.0" dy="0">reuse existing instance</tspan></text>
+<line x1="30" y1="317.0" x2="730" y2="317.0" stroke="#f59e0b" stroke-width="1"/>
+<line class="message dashed" x1="260.0" y1="360.0" x2="80.0" y2="360.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="352.0"><tspan x="170.0" dy="0">singleton instance</tspan></text>
+<line class="message" x1="80.0" y1="410.0" x2="260.0" y2="410.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="402.0"><tspan x="170.0" dy="0">Operation()</tspan></text>
+</svg>

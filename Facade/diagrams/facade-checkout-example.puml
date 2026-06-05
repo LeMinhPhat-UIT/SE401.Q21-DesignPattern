@@ -1,0 +1,53 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class OrderController {
+  -checkoutFacade: CheckoutFacade
+  +PlaceOrder(request: CheckoutRequest): CheckoutResult
+}
+
+class CheckoutFacade {
+  -inventoryService: InventoryService
+  -paymentService: PaymentService
+  -orderService: OrderService
+  -emailService: EmailService
+  +Checkout(request: CheckoutRequest): CheckoutResult
+}
+
+class InventoryService {
+  +CheckStock(items: List<OrderItem>): bool
+  +ReserveStock(items: List<OrderItem>)
+}
+
+class PaymentService {
+  +Pay(userId: Guid, amount: decimal): PaymentResult
+}
+
+class OrderService {
+  +CreateOrder(request: CheckoutRequest): Order
+}
+
+class EmailService {
+  +SendConfirmation(email: string, orderId: Guid)
+}
+
+class CheckoutRequest {
+  +UserId: Guid
+  +Email: string
+  +Items: List<OrderItem>
+}
+
+class CheckoutResult {
+  +Success: bool
+  +Message: string
+  +OrderId: Guid
+}
+
+OrderController --> CheckoutFacade
+CheckoutFacade --> InventoryService
+CheckoutFacade --> PaymentService
+CheckoutFacade --> OrderService
+CheckoutFacade --> EmailService
+CheckoutFacade ..> CheckoutRequest
+CheckoutFacade ..> CheckoutResult
+@enduml

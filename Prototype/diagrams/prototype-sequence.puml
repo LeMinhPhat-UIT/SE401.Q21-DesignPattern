@@ -1,0 +1,14 @@
+@startuml
+actor Client
+participant "PrototypeRegistry" as Registry
+participant "Prototype" as Prototype
+participant "Cloned Object" as Clone
+
+Client -> Registry: Create("goblin")
+Registry -> Prototype: Clone()
+Prototype -> Clone: create copy
+Clone --> Prototype: copied object
+Prototype --> Registry: cloned object
+Registry --> Client: cloned object
+Client -> Clone: customize position/level
+@enduml

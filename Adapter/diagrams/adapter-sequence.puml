@@ -1,0 +1,14 @@
+@startuml
+actor Client
+participant "Target Interface" as Target
+participant Adapter
+participant Adaptee
+
+Client -> Target : request(data)
+Target -> Adapter : request(data)
+Adapter -> Adapter : convert(data)
+Adapter -> Adaptee : specificRequest(specificData)
+Adaptee --> Adapter : specificResult
+Adapter -> Adapter : convertResult(specificResult)
+Adapter --> Client : result
+@enduml

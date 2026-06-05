@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="1184" viewBox="0 0 1060 1184">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .participant { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .actor { fill: #ecfeff; stroke: #0891b2; stroke-width: 1.4; }
+  .title { font: 600 13px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .lifeline { stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 6 5; }
+  .message { stroke: #334155; stroke-width: 1.35; fill: none; }
+  .message.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .guard { fill: #fef3c7; stroke: #f59e0b; stroke-width: 1.1; }
+  .guard-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #78350f; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<rect class="actor" x="16.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="80.0" y="43.0"><tspan x="80.0" dy="0">Client</tspan></text>
+<line class="lifeline" x1="80.0" y1="70" x2="80.0" y2="1150.0"/>
+<rect class="participant" x="196.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="260.0" y="43.0"><tspan x="260.0" dy="0">Logging</tspan></text>
+<line class="lifeline" x1="260.0" y1="70" x2="260.0" y2="1150.0"/>
+<rect class="participant" x="376.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="440.0" y="43.0"><tspan x="440.0" dy="0">Auth</tspan></text>
+<line class="lifeline" x1="440.0" y1="70" x2="440.0" y2="1150.0"/>
+<rect class="participant" x="556.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="620.0" y="43.0"><tspan x="620.0" dy="0">Authorization</tspan></text>
+<line class="lifeline" x1="620.0" y1="70" x2="620.0" y2="1150.0"/>
+<rect class="participant" x="736.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="800.0" y="43.0"><tspan x="800.0" dy="0">Validation</tspan></text>
+<line class="lifeline" x1="800.0" y1="70" x2="800.0" y2="1150.0"/>
+<rect class="participant" x="916.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="980.0" y="43.0"><tspan x="980.0" dy="0">Business</tspan></text>
+<line class="lifeline" x1="980.0" y1="70" x2="980.0" y2="1150.0"/>
+<line class="message" x1="80.0" y1="108.0" x2="260.0" y2="108.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="100.0"><tspan x="170.0" dy="0">HandleAsync(context)</tspan></text>
+<path class="message" d="M260.0,158.0 H314.0 V182.0 H266.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="332.0" y="150.0"><tspan x="332.0" dy="0">log request</tspan></text>
+<line class="message" x1="260.0" y1="208.0" x2="440.0" y2="208.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="200.0"><tspan x="350.0" dy="0">forward if not rejected</tspan></text>
+<path class="message" d="M440.0,258.0 H494.0 V282.0 H446.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="512.0" y="250.0"><tspan x="512.0" dy="0">check IsAuthenticated</tspan></text>
+<rect class="guard" x="30" y="288.0" width="1000" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="304.0"><tspan x="42.0" dy="0">alt authenticated</tspan></text>
+<line class="message" x1="440.0" y1="342.0" x2="620.0" y2="342.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="334.0"><tspan x="530.0" dy="0">forward request</tspan></text>
+<path class="message" d="M620.0,392.0 H674.0 V416.0 H626.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="692.0" y="384.0"><tspan x="692.0" dy="0">check HasPermission</tspan></text>
+<rect class="guard" x="30" y="422.0" width="1000" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="438.0"><tspan x="42.0" dy="0">alt authorized</tspan></text>
+<line class="message" x1="620.0" y1="476.0" x2="800.0" y2="476.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="710.0" y="468.0"><tspan x="710.0" dy="0">forward request</tspan></text>
+<path class="message" d="M800.0,526.0 H854.0 V550.0 H806.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="872.0" y="518.0"><tspan x="872.0" dy="0">check Payload</tspan></text>
+<rect class="guard" x="30" y="556.0" width="1000" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="572.0"><tspan x="42.0" dy="0">alt valid</tspan></text>
+<line class="message" x1="800.0" y1="610.0" x2="980.0" y2="610.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="890.0" y="602.0"><tspan x="890.0" dy="0">forward request</tspan></text>
+<path class="message" d="M980.0,660.0 H1034.0 V684.0 H986.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="1052.0" y="652.0"><tspan x="1052.0" dy="0">execute business logic</tspan></text>
+<line class="message dashed" x1="980.0" y1="710.0" x2="80.0" y2="710.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="702.0"><tspan x="530.0" dy="0">success</tspan></text>
+<rect class="guard" x="30" y="740.0" width="1000" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="756.0"><tspan x="42.0" dy="0">else invalid</tspan></text>
+<line class="message dashed" x1="800.0" y1="794.0" x2="80.0" y2="794.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="440.0" y="786.0"><tspan x="440.0" dy="0">IsRejected = true</tspan></text>
+<line x1="30" y1="835.0" x2="1030" y2="835.0" stroke="#f59e0b" stroke-width="1"/>
+<rect class="guard" x="30" y="858.0" width="1000" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="874.0"><tspan x="42.0" dy="0">else forbidden</tspan></text>
+<line class="message dashed" x1="620.0" y1="912.0" x2="80.0" y2="912.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="904.0"><tspan x="350.0" dy="0">IsRejected = true</tspan></text>
+<line x1="30" y1="953.0" x2="1030" y2="953.0" stroke="#f59e0b" stroke-width="1"/>
+<rect class="guard" x="30" y="976.0" width="1000" height="24" rx="6"/>
+<text class="guard-text" text-anchor="start" x="42.0" y="992.0"><tspan x="42.0" dy="0">else unauthenticated</tspan></text>
+<line class="message dashed" x1="440.0" y1="1030.0" x2="80.0" y2="1030.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="260.0" y="1022.0"><tspan x="260.0" dy="0">IsRejected = true</tspan></text>
+<line x1="30" y1="1071.0" x2="1030" y2="1071.0" stroke="#f59e0b" stroke-width="1"/>
+</svg>

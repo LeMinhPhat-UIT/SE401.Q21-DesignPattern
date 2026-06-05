@@ -1,0 +1,42 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class CheckoutService {
+  -paymentGateway: IPaymentGateway
+  +Checkout(totalAmount: decimal): void
+}
+
+interface IPaymentGateway {
+  +Pay(amount: decimal, currency: string): PaymentResult
+}
+
+class StripePaymentAdapter {
+  -stripeService: StripeService
+  +Pay(amount: decimal, currency: string): PaymentResult
+  -ConvertToCents(amount: decimal): long
+}
+
+class StripeService {
+  +Charge(amountInCents: long, currencyCode: string): StripeResponse
+}
+
+class PaymentResult {
+  +Success: bool
+  +TransactionId: string
+  +Message: string
+}
+
+class StripeResponse {
+  +IsSuccess: bool
+  +TransactionId: string
+  +Message: string
+}
+
+CheckoutService --> IPaymentGateway
+StripePaymentAdapter ..|> IPaymentGateway
+StripePaymentAdapter --> StripeService
+IPaymentGateway ..> PaymentResult
+StripeService ..> StripeResponse
+StripePaymentAdapter ..> PaymentResult
+StripePaymentAdapter ..> StripeResponse
+@enduml

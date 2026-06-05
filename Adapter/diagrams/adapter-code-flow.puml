@@ -1,0 +1,19 @@
+@startuml
+actor User
+participant CheckoutService
+participant "IPaymentGateway" as Gateway
+participant "StripePaymentAdapter" as Adapter
+participant StripeService
+participant PaymentResult
+
+User -> CheckoutService: Checkout(19.99m)
+CheckoutService -> Gateway: Pay(totalAmount, "USD")
+Gateway -> Adapter: Pay(amount, currency)
+Adapter -> Adapter: ConvertToCents(amount)
+Adapter -> StripeService: Charge(amountInCents, currency)
+StripeService --> Adapter: StripeResponse
+Adapter -> PaymentResult: new(success, transactionId, message)
+PaymentResult --> Adapter: result
+Adapter --> CheckoutService: PaymentResult
+CheckoutService --> User: print success or failure
+@enduml

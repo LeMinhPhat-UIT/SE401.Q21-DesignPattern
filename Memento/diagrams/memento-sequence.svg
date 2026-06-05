@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="828" viewBox="0 0 760 828">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+  </marker>
+</defs>
+<style>
+  .participant { fill: #ffffff; stroke: #334155; stroke-width: 1.4; }
+  .actor { fill: #ecfeff; stroke: #0891b2; stroke-width: 1.4; }
+  .title { font: 600 13px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .lifeline { stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 6 5; }
+  .message { stroke: #334155; stroke-width: 1.35; fill: none; }
+  .message.dashed { stroke-dasharray: 6 5; }
+  .label { font: 12px "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+  .guard { fill: #fef3c7; stroke: #f59e0b; stroke-width: 1.1; }
+  .guard-text { font: 12px "Segoe UI", Arial, sans-serif; fill: #78350f; }
+</style>
+<rect x="0" y="0" width="100%" height="100%" fill="#f8fafc"/>
+<rect class="actor" x="16.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="80.0" y="43.0"><tspan x="80.0" dy="0">User</tspan></text>
+<line class="lifeline" x1="80.0" y1="70" x2="80.0" y2="794.0"/>
+<rect class="participant" x="196.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="260.0" y="43.0"><tspan x="260.0" dy="0">Caretaker</tspan></text>
+<line class="lifeline" x1="260.0" y1="70" x2="260.0" y2="794.0"/>
+<rect class="participant" x="376.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="440.0" y="43.0"><tspan x="440.0" dy="0">Originator</tspan></text>
+<line class="lifeline" x1="440.0" y1="70" x2="440.0" y2="794.0"/>
+<rect class="participant" x="556.0" y="24" width="128" height="46" rx="8"/>
+<text class="title" text-anchor="middle" x="620.0" y="43.0"><tspan x="620.0" dy="0">Memento</tspan></text>
+<line class="lifeline" x1="620.0" y1="70" x2="620.0" y2="794.0"/>
+<line class="message" x1="80.0" y1="108.0" x2="260.0" y2="108.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="100.0"><tspan x="170.0" dy="0">backup()</tspan></text>
+<line class="message" x1="260.0" y1="158.0" x2="440.0" y2="158.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="150.0"><tspan x="350.0" dy="0">save()</tspan></text>
+<line class="message" x1="440.0" y1="208.0" x2="620.0" y2="208.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="200.0"><tspan x="530.0" dy="0">new(state)</tspan></text>
+<line class="message dashed" x1="620.0" y1="258.0" x2="440.0" y2="258.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="250.0"><tspan x="530.0" dy="0">memento</tspan></text>
+<line class="message dashed" x1="440.0" y1="308.0" x2="260.0" y2="308.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="300.0"><tspan x="350.0" dy="0">memento</tspan></text>
+<path class="message" d="M260.0,358.0 H314.0 V382.0 H266.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="332.0" y="350.0"><tspan x="332.0" dy="0">push(memento)</tspan></text>
+<line class="message" x1="80.0" y1="408.0" x2="440.0" y2="408.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="260.0" y="400.0"><tspan x="260.0" dy="0">changeState()</tspan></text>
+<line class="message" x1="80.0" y1="458.0" x2="260.0" y2="458.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="170.0" y="450.0"><tspan x="170.0" dy="0">undo()</tspan></text>
+<path class="message" d="M260.0,508.0 H314.0 V532.0 H266.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="332.0" y="500.0"><tspan x="332.0" dy="0">pop()</tspan></text>
+<line class="message" x1="260.0" y1="558.0" x2="440.0" y2="558.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="350.0" y="550.0"><tspan x="350.0" dy="0">restore(memento)</tspan></text>
+<line class="message" x1="440.0" y1="608.0" x2="620.0" y2="608.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="600.0"><tspan x="530.0" dy="0">getState()</tspan></text>
+<line class="message dashed" x1="620.0" y1="658.0" x2="440.0" y2="658.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="middle" x="530.0" y="650.0"><tspan x="530.0" dy="0">state</tspan></text>
+<path class="message" d="M440.0,708.0 H494.0 V732.0 H446.0" marker-end="url(#arrow)"/>
+<text class="label" text-anchor="start" x="512.0" y="700.0"><tspan x="512.0" dy="0">apply old state</tspan></text>
+</svg>

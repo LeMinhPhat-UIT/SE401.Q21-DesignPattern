@@ -1,0 +1,22 @@
+@startuml
+actor Client
+participant OrderService
+participant PaymentService
+participant Logger
+participant "Lazy<T>" as Lazy
+
+Client -> OrderService: CreateOrder()
+OrderService -> Logger: Instance
+Logger -> Logger: create once if needed
+Logger --> OrderService: same Logger instance
+OrderService -> Logger: Log("order created")
+
+Client -> PaymentService: Pay()
+PaymentService -> Logger: Instance
+Logger --> PaymentService: same Logger instance
+PaymentService -> Logger: Log("payment processed")
+
+Client -> Lazy: Value
+Lazy -> Logger: create thread-safe instance
+Logger --> Lazy: singleton instance
+@enduml

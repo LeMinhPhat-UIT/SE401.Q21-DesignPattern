@@ -129,6 +129,12 @@ Originator ..> Memento : creates/restores
 @enduml
 ```
 
+#figure(
+  image("diagrams/memento-structure.svg", width: 100%),
+  caption: [Cấu trúc UML tổng quát của Memento Pattern],
+)
+
+
 Giải thích sơ đồ:
 
 - `Originator` có state thật sự của object.
@@ -177,6 +183,12 @@ EditorHistory --> TextEditor : controls undo/redo
 
 @enduml
 ```
+
+#figure(
+  image("diagrams/memento-text-editor-example.svg", width: 100%),
+  caption: [Class diagram của ví dụ Text Editor],
+)
+
 
 Trong ví dụ này:
 
@@ -230,6 +242,12 @@ Memento --> Originator: state
 Originator -> Originator: apply old state
 @enduml
 ```
+
+#figure(
+  image("diagrams/memento-sequence.svg", width: 100%),
+  caption: [Luồng backup và undo bằng Memento],
+)
+
 
 == Ví dụ code C\#
 
@@ -375,6 +393,13 @@ Trong ví dụ này:
 - `TextEditor` không để lộ trực tiếp field `_content` và `_cursorPosition` cho client chỉnh sửa tùy tiện.
 - `EditorMemento` lưu snapshot của editor.
 - `EditorHistory` chỉ quản lý các snapshot trong stack, không xử lý logic nội bộ của editor.
+
+
+
+#figure(
+  image("diagrams/memento-code-flow.svg", width: 100%),
+  caption: [Luồng chạy code ví dụ TextEditor undo],
+)
 
 == Biến thể Undo/Redo
 

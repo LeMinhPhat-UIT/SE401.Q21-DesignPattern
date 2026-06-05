@@ -163,6 +163,12 @@ end note
 @enduml
 ```
 
+#figure(
+  image("diagrams/adapter-structure.svg", width: 100%),
+  caption: [Cấu trúc UML tổng quát của Adapter Pattern],
+)
+
+
 Trong sơ đồ này:
 
 - `Client` chỉ phụ thuộc vào `Target`.
@@ -200,6 +206,12 @@ Adapter -> Adapter : convertResult(specificResult)
 Adapter --> Client : result
 @enduml
 ```
+
+#figure(
+  image("diagrams/adapter-sequence.svg", width: 100%),
+  caption: [Luồng hoạt động giữa Client, Adapter và Adaptee],
+)
+
 
 == Phân loại Adapter
 
@@ -369,6 +381,13 @@ checkoutService.Checkout(19.99m);
 
 Điểm quan trọng là `CheckoutService` không phụ thuộc vào `StripeService`. Nếu sau này thay Stripe bằng PayPal hoặc MoMo, ta chỉ cần tạo adapter mới implement `IPaymentGateway`, client không cần sửa.
 
+
+
+#figure(
+  image("diagrams/adapter-code-flow.svg", width: 100%),
+  caption: [Luồng chạy code ví dụ CheckoutService và StripePaymentAdapter],
+)
+
 == UML cho ví dụ thanh toán
 
 ```plantuml
@@ -415,6 +434,12 @@ StripePaymentAdapter ..> PaymentResult
 StripePaymentAdapter ..> StripeResponse
 @enduml
 ```
+
+#figure(
+  image("diagrams/adapter-payment-example.svg", width: 100%),
+  caption: [Class diagram của ví dụ StripePaymentAdapter],
+)
+
 
 == Khả năng ứng dụng
 

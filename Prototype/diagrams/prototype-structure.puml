@@ -1,0 +1,25 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface Prototype {
+  +Clone(): Prototype
+}
+
+class ConcretePrototype {
+  -state: string
+  -items: List<string>
+  +Clone(): Prototype
+}
+
+class Client {
+  +Operation(): void
+}
+
+Prototype <|.. ConcretePrototype
+Client --> Prototype : uses
+
+note right of ConcretePrototype
+Clone() có thể là shallow copy,
+deep copy hoặc copy có chọn lọc.
+end note
+@enduml

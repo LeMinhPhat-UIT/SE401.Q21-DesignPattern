@@ -200,6 +200,12 @@ end note
 @enduml
 ```
 
+#figure(
+  image("diagrams/flyweight-structure.svg", width: 100%),
+  caption: [Cấu trúc UML tổng quát của Flyweight Pattern],
+)
+
+
 Ý nghĩa sơ đồ:
 
 - `Client` không cần tạo trực tiếp `ConcreteFlyweight`.
@@ -258,6 +264,12 @@ end note
 @enduml
 ```
 
+#figure(
+  image("diagrams/flyweight-forest-example.svg", width: 100%),
+  caption: [Class diagram của ví dụ rừng cây],
+)
+
+
 Trong ví dụ này:
 
 - `TreeType` là Flyweight vì chứa dữ liệu dùng chung.
@@ -303,6 +315,12 @@ Flyweight --> Context: vẽ dựa trên intrinsic + extrinsic state
 Context --> Client: hoàn tất
 @enduml
 ```
+
+#figure(
+  image("diagrams/flyweight-sequence.svg", width: 100%),
+  caption: [Luồng tạo và tái sử dụng Flyweight qua Factory],
+)
+
 
 Điểm quan trọng là Factory không tạo mới Flyweight mỗi lần. Nó chỉ tạo mới khi chưa có object dùng chung tương ứng.
 
@@ -442,6 +460,13 @@ Total tree types: 2
 ```
 
 Dù có 4 cây, hệ thống chỉ tạo 2 `TreeType`. Nếu số lượng cây tăng lên hàng chục nghìn, lợi ích tiết kiệm bộ nhớ sẽ rõ ràng hơn.
+
+
+
+#figure(
+  image("diagrams/flyweight-code-flow.svg", width: 100%),
+  caption: [Luồng chạy code ví dụ Forest, Tree và TreeTypeFactory],
+)
 
 == Phân tích ví dụ
 
@@ -679,6 +704,12 @@ MapMarker --> MarkerStyle
 MarkerStyleFactory --> MarkerStyle
 @enduml
 ```
+
+#figure(
+  image("diagrams/flyweight-map-marker-example.svg", width: 100%),
+  caption: [Class diagram của ví dụ marker bản đồ],
+)
+
 
 Cách thiết kế này giúp bản đồ nhẹ hơn và tránh lặp lại style/icon cho từng marker.
 

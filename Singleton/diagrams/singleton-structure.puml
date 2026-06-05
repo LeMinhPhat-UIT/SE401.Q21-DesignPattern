@@ -1,0 +1,21 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Client {
+  +DoWork()
+}
+
+class Singleton {
+  -static instance: Singleton
+  -Singleton()
+  +static Instance: Singleton
+  +Operation()
+}
+
+Client --> Singleton : uses Instance
+
+note right of Singleton
+  Constructor private để ngăn new từ bên ngoài.
+  Instance static đảm bảo có một điểm truy cập chung.
+end note
+@enduml

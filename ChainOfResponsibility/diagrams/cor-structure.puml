@@ -1,0 +1,40 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Client
+
+interface Handler {
+  +setNext(next: Handler): Handler
+  +handle(request: Request)
+}
+
+abstract class BaseHandler {
+  -next: Handler
+  +setNext(next: Handler): Handler
+  +handle(request: Request)
+}
+
+class ConcreteHandlerA {
+  +handle(request: Request)
+}
+
+class ConcreteHandlerB {
+  +handle(request: Request)
+}
+
+class ConcreteHandlerC {
+  +handle(request: Request)
+}
+
+Client --> Handler : sends request to first handler
+BaseHandler ..|> Handler
+BaseHandler o--> Handler : next
+ConcreteHandlerA --|> BaseHandler
+ConcreteHandlerB --|> BaseHandler
+ConcreteHandlerC --|> BaseHandler
+
+note right of BaseHandler
+  Nếu handler hiện tại không dừng chain,
+  request được chuyển cho next handler.
+end note
+@enduml

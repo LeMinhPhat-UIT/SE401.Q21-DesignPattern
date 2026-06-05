@@ -1,0 +1,30 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class AbstractClass {
+  +TemplateMethod()
+  #StepOne()
+  #StepTwo()
+  #StepThree()
+  #Hook()
+}
+
+class ConcreteClassA {
+  #StepTwo()
+  #StepThree()
+}
+
+class ConcreteClassB {
+  #StepTwo()
+  #StepThree()
+  #Hook()
+}
+
+AbstractClass <|-- ConcreteClassA
+AbstractClass <|-- ConcreteClassB
+
+note right of AbstractClass
+  TemplateMethod() cố định workflow.
+  Các Step/Hook là điểm tùy biến.
+end note
+@enduml

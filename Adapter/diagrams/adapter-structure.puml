@@ -1,0 +1,27 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Client
+
+interface Target {
+  +request(data)
+}
+
+class Adapter {
+  -adaptee: Adaptee
+  +request(data)
+}
+
+class Adaptee {
+  +specificRequest(specificData)
+}
+
+Client --> Target : uses
+Adapter ..|> Target
+Adapter --> Adaptee : delegates / translates
+
+note bottom of Adapter
+  specificData = convert(data)
+  return adaptee.specificRequest(specificData)
+end note
+@enduml

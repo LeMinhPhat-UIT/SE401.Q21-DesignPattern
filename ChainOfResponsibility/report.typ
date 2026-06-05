@@ -231,6 +231,12 @@ end note
 @enduml
 ```
 
+#figure(
+  image("diagrams/cor-structure.svg", width: 100%),
+  caption: [Cấu trúc UML tổng quát của Chain of Responsibility],
+)
+
+
 Trong sơ đồ này:
 
 - `Handler` định nghĩa hợp đồng xử lý chung.
@@ -281,6 +287,12 @@ else unauthenticated
 end
 @enduml
 ```
+
+#figure(
+  image("diagrams/cor-sequence.svg", width: 100%),
+  caption: [Luồng request qua các handler trong chain],
+)
+
 
 Điểm quan trọng trong luồng này là mỗi handler có quyền quyết định chain có tiếp tục hay không.
 
@@ -486,6 +498,13 @@ if (context.IsRejected)
 - `AuthenticationHandler`, `AuthorizationHandler`, `ValidationHandler` có thể dừng chain nếu request không hợp lệ.
 - `BusinessHandler` chỉ chạy khi request đã vượt qua các bước trước đó.
 
+
+
+#figure(
+  image("diagrams/cor-code-flow.svg", width: 100%),
+  caption: [Luồng chạy code ví dụ request pipeline],
+)
+
 == Class diagram cho ví dụ C\#
 
 ```plantuml
@@ -532,6 +551,12 @@ ValidationHandler --> RequestContext
 BusinessHandler --> RequestContext
 @enduml
 ```
+
+#figure(
+  image("diagrams/cor-request-pipeline.svg", width: 100%),
+  caption: [Class diagram của pipeline xử lý request],
+)
+
 
 == Đánh giá
 

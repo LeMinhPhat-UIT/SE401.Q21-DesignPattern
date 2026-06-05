@@ -1,0 +1,39 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Order {
+  +Id: Guid
+  +Total: decimal
+  +Status: string
+}
+
+abstract class PaymentProcessor {
+  +Pay(order: Order)
+  #ValidateOrder(order: Order)
+  #CalculateAmount(order: Order): decimal
+  #BeforePayment(order: Order)
+  #ProcessPayment(amount: decimal)
+  #UpdateOrderStatus(order: Order)
+  #ShouldSendNotification(): bool
+  #SendNotification(order: Order)
+}
+
+class CreditCardPaymentProcessor {
+  #BeforePayment(order: Order)
+  #ProcessPayment(amount: decimal)
+}
+
+class MomoPaymentProcessor {
+  #ProcessPayment(amount: decimal)
+}
+
+class CashPaymentProcessor {
+  #ProcessPayment(amount: decimal)
+  #ShouldSendNotification(): bool
+}
+
+PaymentProcessor <|-- CreditCardPaymentProcessor
+PaymentProcessor <|-- MomoPaymentProcessor
+PaymentProcessor <|-- CashPaymentProcessor
+PaymentProcessor --> Order
+@enduml

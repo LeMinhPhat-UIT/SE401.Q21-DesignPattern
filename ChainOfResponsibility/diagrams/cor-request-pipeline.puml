@@ -1,0 +1,42 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class RequestContext {
+  +UserName: string
+  +IsAuthenticated: bool
+  +HasPermission: bool
+  +Payload: string
+  +IsRejected: bool
+  +ErrorMessage: string
+}
+
+interface IRequestHandler {
+  +SetNext(next: IRequestHandler): IRequestHandler
+  +HandleAsync(context: RequestContext): Task
+}
+
+abstract class BaseRequestHandler {
+  -next: IRequestHandler
+  +SetNext(next: IRequestHandler): IRequestHandler
+  +HandleAsync(context: RequestContext): Task
+}
+
+class LoggingHandler
+class AuthenticationHandler
+class AuthorizationHandler
+class ValidationHandler
+class BusinessHandler
+
+IRequestHandler <|.. BaseRequestHandler
+BaseRequestHandler <|-- LoggingHandler
+BaseRequestHandler <|-- AuthenticationHandler
+BaseRequestHandler <|-- AuthorizationHandler
+BaseRequestHandler <|-- ValidationHandler
+BaseRequestHandler <|-- BusinessHandler
+BaseRequestHandler o--> IRequestHandler : next
+LoggingHandler --> RequestContext
+AuthenticationHandler --> RequestContext
+AuthorizationHandler --> RequestContext
+ValidationHandler --> RequestContext
+BusinessHandler --> RequestContext
+@enduml

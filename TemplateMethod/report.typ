@@ -156,6 +156,12 @@ end note
 @enduml
 ```
 
+#figure(
+  image("diagrams/template-method-structure.svg", width: 100%),
+  caption: [Cấu trúc UML tổng quát của Template Method],
+)
+
+
 === UML ví dụ PaymentProcessor
 
 ```plantuml
@@ -200,6 +206,12 @@ PaymentProcessor --> Order
 @enduml
 ```
 
+#figure(
+  image("diagrams/template-method-payment-example.svg", width: 100%),
+  caption: [Class diagram của ví dụ PaymentProcessor],
+)
+
+
 == Luồng hoạt động
 
 Luồng hoạt động của Template Method:
@@ -231,6 +243,12 @@ Concrete --> Client: done
 deactivate Concrete
 @enduml
 ```
+
+#figure(
+  image("diagrams/template-method-sequence.svg", width: 100%),
+  caption: [Luồng chạy template method trong PaymentProcessor],
+)
+
 
 == Code minh họa C\#
 
@@ -360,6 +378,13 @@ processor.Pay(order);
 ```
 
 Client chỉ gọi `Pay(order)`. Nó không cần quan tâm bên trong có những bước nào và thứ tự ra sao. Class cha đảm bảo workflow chung, class con chỉ thay đổi phần thanh toán cụ thể.
+
+
+
+#figure(
+  image("diagrams/template-method-code-flow.svg", width: 100%),
+  caption: [Luồng chạy code ví dụ PaymentProcessor.Pay],
+)
 
 == Đánh giá
 

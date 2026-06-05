@@ -1,0 +1,25 @@
+@startuml
+actor Program
+participant Forest
+participant "TreeTypeFactory" as Factory
+participant TreeType
+participant Tree
+
+Program -> Forest: PlantTree(10, 20, "Oak", "Green", "oak.png")
+Forest -> Factory: GetTreeType("Oak", "Green", "oak.png")
+Factory -> TreeType: new TreeType(...)
+TreeType --> Factory: Oak type
+Factory --> Forest: cached TreeType
+Forest -> Tree: new Tree(x, y, type)
+Tree --> Forest: tree context
+
+Program -> Forest: PlantTree(30, 40, "Oak", "Green", "oak.png")
+Forest -> Factory: GetTreeType("Oak", "Green", "oak.png")
+Factory --> Forest: reuse existing TreeType
+Forest -> Tree: new Tree(x, y, type)
+
+Program -> Forest: Draw()
+Forest -> Tree: Draw()
+Tree -> TreeType: Draw(x, y)
+TreeType --> Program: rendered tree
+@enduml
