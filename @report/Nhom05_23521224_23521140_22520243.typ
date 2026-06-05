@@ -40,6 +40,10 @@
   )
 }
 
+#show outline.entry.where(level: 3): it => {
+  // Đừng hiện Heading 3 trong outline
+}
+
 #include "trang_bia.typ"
 
 #align(center, outline(title: "MỤC LỤC", indent: 2em))
