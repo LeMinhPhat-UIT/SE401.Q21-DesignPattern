@@ -1,4 +1,4 @@
-#set heading(level: 2)
+#set heading(level: 3)
 
 = Tên và Phân loại
 Mediator - Mẫu hành vi (Behavioral Pattern)

@@ -1,4 +1,4 @@
-#set heading(level: 2)
+#set heading(level: 3)
 
 = Tên và Phân loại
 Decorator (Trang trí) — Structural
